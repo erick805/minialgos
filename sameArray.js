@@ -7,6 +7,8 @@
 // SPACE COMPLEXITY
 // O(1) space complexity
 
+// ORDER MATTERS
+
 const sameArray = (arrOne, arrTwo) => {
   if (arrOne.length === 0 && arrTwo.length === 0) return true;
   if (arrOne.length !== arrTwo.length) {
@@ -20,5 +22,29 @@ const sameArray = (arrOne, arrTwo) => {
     pt2++;
     if (pt1 === arrOne.length && pt2 === arrTwo.length) return true;
   }
+  return false;
+};
+
+// Brute force approach
+
+// TIME COMPLEXITY
+// O(n)^2 - time complexity
+
+// SPACE COMPLEXITY
+// O(1) - space complexity
+
+// ORDER DOES NOT MATTER
+
+const sameArray = (arrOne, arrTwo) => {
+  if (arrOne.length !== arrTwo.length) {
+    return false;
+  }
+  let matchedNums = 0;
+  for (let i = 0; i < arrOne.length; i++) {
+    for (let j = 0; j < arrTwo.length; j++) {
+      if (arrTwo[j] === arrOne[i] ** 2) matchedNums++;
+    }
+  }
+  if (matchedNums === arrOne.length) return true;
   return false;
 };
