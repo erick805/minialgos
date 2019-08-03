@@ -16,18 +16,37 @@ function charCount(str) {
   let count = {};
   // for (let i = 0; i < str.length; i++) {
 
-  // refactored to for of loop
+  // 1) refactored to for of loop
   for (let char of str) {
-    char = char.toLowerCase();
-
-    if (!"abcdefghijklmnopqrstuvwxyz0123456789".includes(char)) {
-      continue;
+    // char = char.toLowerCase();
+    // if (!"abcdefghijklmnopqrstuvwxyz0123456789".includes(char)) {
+    //   continue;
+    // }
+    // 2) refactored to functional and compare with char codes
+    if (isAlphaNemuric(char)) {
+      count[char] = ++count[char] || 1;
     }
-    if (!count[char]) {
-      count[char] = 1;
-    } else {
-      count[char]++;
-    }
+    // if (!count[char]) {
+    //   count[char] = 1;
+    // } else {
+    //   count[char]++;
+    // }
   }
   return count;
+}
+
+function isAlphaNemuric(char) {
+  let code = char.charCodeAt(0);
+
+  if (
+    // numeric (0 - 9)
+    !(code > 47 && code < 58) &&
+    // upper alpha (A - Z)
+    !(code > 64 && code < 91) &&
+    // lower alpha (a - z)
+    !(code > 96 && code < 123)
+  ) {
+    return false;
+  }
+  return true;
 }
