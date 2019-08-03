@@ -24,6 +24,7 @@ function charCount(str) {
     // }
     // 2) refactored to functional and compare with char codes
     if (isAlphaNemuric(char)) {
+      char = char.toLowerCase();
       count[char] = ++count[char] || 1;
     }
     // if (!count[char]) {
