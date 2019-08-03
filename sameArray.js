@@ -48,3 +48,38 @@ const sameArray = (arrOne, arrTwo) => {
   if (matchedNums === arrOne.length) return true;
   return false;
 };
+
+// Optimized Approach
+
+// TIME COMPLEXITY
+// O(n) - time complexity
+
+// SPACE COMPLEXITY
+// O(1) - space complexity
+
+// ORDER DOES NOT MATTER
+
+const sameArray = (arrOne, arrTwo) => {
+  if (arrOne.length !== arrTwo.length) {
+    return false;
+  }
+  let frequencyCounterOne = {};
+  let frequencyCounterTwo = {};
+
+  for (let val of arrOne) {
+    frequencyCounterOne[val] = (frequencyCounterOne[val] || 0) + 1;
+  }
+
+  for (let val of arrTwo) {
+    frequencyCounterTwo[val] = (frequencyCounterTwo[val] || 0) + 1;
+  }
+
+  for (let key in frequencyCounterOne) {
+    if (!(key ** 2 in frequencyCounterTwo)) {
+      return false;
+    }
+    if (frequencyCounterTwo[key ** 2] !== frequencyCounterOne[key])
+      return false;
+  }
+  return true;
+};
