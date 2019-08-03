@@ -14,12 +14,16 @@
 
 function charCount(str) {
   let count = {};
-  for (let i = 0; i < str.length; i++) {
-    let char = str[i].toLowerCase();
-    if (!"abcdefghijklmnopqrstuvwxyz0123456789".includes(str[i])) {
+  // for (let i = 0; i < str.length; i++) {
+
+  // refactored to for of loop
+  for (let char of str) {
+    char = char.toLowerCase();
+
+    if (!"abcdefghijklmnopqrstuvwxyz0123456789".includes(char)) {
       continue;
     }
-    if (!count[str[i].toLowerCase()]) {
+    if (!count[char]) {
       count[char] = 1;
     } else {
       count[char]++;
