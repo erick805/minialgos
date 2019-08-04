@@ -2,7 +2,7 @@
 // else return undefined.
 
 // TIME COMPLEXITY
-// O(logn) time complexity
+// O(n) time complexity
 
 // SPACE COMPLEXITY
 // O(1) space complexity
@@ -21,5 +21,5 @@ function sumZero(arr) {
     } else pt1++;
   }
 
-  return undefined;
+  // return undefined;
 }
