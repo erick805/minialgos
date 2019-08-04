@@ -31,3 +31,27 @@ function maxSubSum(arr, num) {
   }
   return max;
 }
+
+// sliding window solution
+
+// TIME COMPLEXITY
+// O(n) time
+
+// SPACE COMPLEXITY
+// O(1) space
+
+function maxSubSum(arr, num) {
+  if (num > arr.length) return null;
+  let tempSum = 0;
+  let maxSum = 0;
+
+  for (let i = 0; i < num; i++) {
+    maxSum += arr[i];
+  }
+  tempSum = maxSum;
+  for (let i = num; i < arr.length; i++) {
+    tempSum = tempSum - arr[i - num] + arr[i];
+    maxSum = Math.max(tempSum, maxSum);
+  }
+  return maxSum;
+}
