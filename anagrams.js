@@ -36,3 +36,25 @@ const anagram = (str1, str2) => {
 
   return true;
 };
+
+// more optimized O(n) time approach
+
+const anagram = (str1, str2) => {
+  if (str1.length !== str2.length) {
+    return false;
+  }
+
+  let count = {};
+
+  for (let val of str1) {
+    if (!count[val]) count[val] = 1;
+    else count[val]++;
+  }
+
+  for (let val of str2) {
+    if (!(val in count)) return false;
+    else count[val] -= 1;
+  }
+
+  return true;
+};
