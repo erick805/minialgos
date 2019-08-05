@@ -5,6 +5,28 @@
 //       (1,2,2) => true
 //       ('a','b','c','a') => true
 
+// frequency count solution
+
+// TIME COMPLEXITY
+// O(n) time
+
+// SPACE COMPLEXITY
+// O(n) space
+
+function areThereDuplicates() {
+  let count = {};
+  for (let val in arguments) {
+    let value = arguments[val];
+    if (!count[value]) count[value] = 1;
+    else count[value]++;
+  }
+
+  for (let key in count) {
+    if (count[key] > 1) return true;
+  }
+  return false;
+}
+
 // multiple pointers solution
 
 // TIME COMPLEXITY
