@@ -32,6 +32,28 @@ function maxSubSum(arr, num) {
   return max;
 }
 
+// second approach quick sort and then grab last nth elements.
+
+// TIME COMPLEXITY
+// O(n logn) time
+
+// SPACE COMPLEXITY
+// O(log(n))
+
+function maxSubSum(arr, num) {
+  if (num > arr.length) return null;
+
+  arr.sort((a, b) => a - b);
+
+  let sum = 0;
+
+  for (let i = arr.length - num; i < arr.length; i++) {
+    sum += arr[i];
+  }
+
+  return sum;
+}
+
 // sliding window solution
 
 // TIME COMPLEXITY
