@@ -14,6 +14,9 @@
 
 // Repeat this with the next element until the array is sorted.
 
+// TIME COMPLEXITY
+// O(n^2) time
+
 function selectionSort(arr) {
   const swap = (arr, idx1, idx2) => {
     [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
@@ -26,7 +29,7 @@ function selectionSort(arr) {
         min = j;
       }
     }
-    swap(arr, min, i);
+    if (i !== min) swap(arr, min, i);
   }
   return arr;
 }
