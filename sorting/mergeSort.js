@@ -16,13 +16,17 @@
 // if the value in first is larger than the value in second, push the value from second into results and move on to next value in second array.
 // once we exhaust one array, push all remaining values from other array.
 
+// break up the array into halves until you have arrays that are empty or have one element.
+// once you have smaller arrays, merge those arrays with other sorted arrays until you are back at full length
+// once array has been merged together, return the merge and sorted array.
+
 function merge(arr1, arr2) {
   let mergedArray = [];
   let pt1 = 0;
   let pt2 = 0;
 
   while (pt1 < arr1.length && pt2 < arr2.length) {
-    if (arr1[pt1] <= arr2[pt2]) {
+    if (arr2[pt2] > arr1[pt1]) {
       mergedArray.push(arr1[pt1]);
       pt1++;
     } else {
@@ -31,10 +35,13 @@ function merge(arr1, arr2) {
     }
   }
 
-  if (arr1.length <= arr2.length) {
-    mergedArray.concat(arr2);
-  } else {
-    mergedArray.concat(arr1);
+  while (pt1 < arr1.length) {
+    mergedArray.push(arr1[pt1]);
+    pt1++;
+  }
+  while (pt2 < arr2.length) {
+    mergedArray.push(arr2[pt2]);
+    pt2++;
   }
 
   return mergedArray;
