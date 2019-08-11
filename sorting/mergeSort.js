@@ -23,6 +23,9 @@
 // TIME COMPLEXITY
 // O(nlogn) time
 
+// SPACE COMPLEXITY
+// O(n) space
+
 function merge(arr1, arr2) {
   let mergedArray = [];
   let pt1 = 0;
