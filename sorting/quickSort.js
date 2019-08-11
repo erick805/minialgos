@@ -33,6 +33,14 @@
 // When the helper returns to you the updated index, recursively call the pivot helper on the subarray to the left, and subarray to the right.
 // your base case occurs when you consider a subarray with less than 2 elements.
 
+// TIME COMPLEXITY
+// O(nlog n) time
+
+// **worst case scenario if you get the min or max all the time (quadratic time)**
+
+// SPACE COMPLEXITY
+// O(nlog n) space
+
 function pivot(arr, start = 0, end = arr.length - 1) {
   let pivotIdx = arr[start];
   let swapIdx = start;
