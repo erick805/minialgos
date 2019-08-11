@@ -27,8 +27,14 @@
 // Swap the starting element (i.e. the pivot) with the pivot index
 // return pivot index
 
+// Quick Sort Pseudocode
+
+// Call the pivot helper on the array
+// When the helper returns to you the updated index, recursively call the pivot helper on the subarray to the left, and subarray to the right.
+// your base case occurs when you consider a subarray with less than 2 elements.
+
 function pivot(arr, start = 0, end = arr.length - 1) {
-  let pivot = arr[start];
+  let pivotIdx = arr[start];
   let swapIdx = start;
 
   function swap(arr, i, j) {
@@ -38,11 +44,22 @@ function pivot(arr, start = 0, end = arr.length - 1) {
   }
 
   for (let i = start + 1; i < arr.length; i++) {
-    if (pivot > arr[i]) {
+    if (pivotIdx > arr[i]) {
       swapIdx++;
       swap(arr, swapIdx, i);
     }
   }
   swap(arr, start, swapIdx);
   return swapIdx;
+}
+
+function quickSort(arr, left = 0, right = arr.length - 1) {
+  if (left < right) {
+    let pivotIdx = pivot(arr, left, right);
+    // left
+    quickSort(arr, left, pivotIdx - 1);
+    // right
+    quickSort(arr, pivotIdx + 1, right);
+  }
+  return arr;
 }
