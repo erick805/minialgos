@@ -26,3 +26,23 @@
 // if pivot is greater than current element, increment the pivot index variable and then swap current element with element at pivot index.
 // Swap the starting element (i.e. the pivot) with the pivot index
 // return pivot index
+
+function pivot(arr, start = 0, end = arr.length - 1) {
+  let pivot = arr[start];
+  let swapIdx = start;
+
+  function swap(arr, i, j) {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+  }
+
+  for (let i = start + 1; i < arr.length; i++) {
+    if (pivot > arr[i]) {
+      swapIdx++;
+      swap(arr, swapIdx, i);
+    }
+  }
+  swap(arr, start, swapIdx);
+  return swapIdx;
+}
