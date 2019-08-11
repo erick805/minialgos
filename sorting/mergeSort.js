@@ -20,6 +20,9 @@
 // once you have smaller arrays, merge those arrays with other sorted arrays until you are back at full length
 // once array has been merged together, return the merge and sorted array.
 
+// TIME COMPLEXITY
+// O(nlogn) time
+
 function merge(arr1, arr2) {
   let mergedArray = [];
   let pt1 = 0;
@@ -44,5 +47,24 @@ function merge(arr1, arr2) {
     pt2++;
   }
 
+  return mergedArray;
+}
+
+function split(wholeArray) {
+  let arrayLength = wholeArray.length;
+
+  let midPoint = Math.floor(arrayLength / 2);
+
+  let firstHalf = mergeSort(wholeArray.slice(0, midPoint));
+
+  let secondHalf = mergeSort(wholeArray.slice(midPoint));
+
+  return [firstHalf, secondHalf];
+}
+
+function mergeSort(array) {
+  if (array.length <= 1) return array;
+  let [firstHalf, secondHalf] = split(array);
+  let mergedArray = merge(firstHalf, secondHalf);
   return mergedArray;
 }
