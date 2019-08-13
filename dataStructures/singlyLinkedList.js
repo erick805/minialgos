@@ -61,6 +61,21 @@ class SinglyLinkedList {
     let currentHead = this.head;
     this.head = currentHead.next;
     this.length--;
+    if (this.length === 0) this.tail = null;
     return currentHead;
+  }
+
+  unshift(val) {
+    let node = new Node(val);
+    if (!this.head) {
+      this.head = node;
+      this.tail = this.head;
+    } else {
+      let currentHead = this.head;
+      node.next = currentHead;
+      this.head = node;
+    }
+    this.length++;
+    return this;
   }
 }
