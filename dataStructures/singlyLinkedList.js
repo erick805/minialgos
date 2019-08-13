@@ -79,6 +79,7 @@ class SinglyLinkedList {
     return this;
   }
 
+  // O(n) time
   get(index) {
     if (index < 0 || index >= this.length) return null;
     let counter = 0;
@@ -100,6 +101,7 @@ class SinglyLinkedList {
     return false;
   }
 
+  // O(1) time
   insert(index, val) {
     if (index < 0 || index > this.length) return false;
 
@@ -117,6 +119,7 @@ class SinglyLinkedList {
     return true;
   }
 
+  // O(1) or O(n) space
   remove(index) {
     if (index < 0 || index >= this.length) return undefined;
     if (index === this.length - 1) return this.pop();
@@ -127,5 +130,22 @@ class SinglyLinkedList {
     prevNode.next = removed.next;
     this.length--;
     return removed;
+  }
+
+  reverse() {
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+
+    let next;
+    let prev = null;
+
+    for (let i = 0; i < this.length; i++) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+    return this;
   }
 }
