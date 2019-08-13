@@ -20,6 +20,12 @@
 
 // In order to implement radix sort, it's helpful to build a few helper functions first:
 
+// TIME COMPLEXITY
+// O(nk)
+
+// SPACE COMPLEXITY
+// O(n + k)
+
 // getDigit(num, place) - returns the digit in num at the given place value.
 function getDigit(num, i) {
   return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
@@ -49,9 +55,7 @@ function radixSort(arr) {
       let digit = getDigit(arr[i], k);
       digitBuckets[digit].push(arr[i]);
     }
-    console.log(digitBuckets);
     arr = [].concat(...digitBuckets);
-    console.log(arr);
   }
   return arr;
 }
