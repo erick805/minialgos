@@ -72,6 +72,7 @@ class DoublyLinkedList {
     return this;
   }
 
+  // O(n) time
   get(index) {
     if (index < 0 || index >= this.length) return null;
     let count, current;
@@ -102,6 +103,7 @@ class DoublyLinkedList {
     return false;
   }
 
+  // O(1) time
   insert(index, val) {
     if (index < 0 || index > this.length) return false;
     if (index === 0) return !!this.unshift(val);
@@ -119,6 +121,7 @@ class DoublyLinkedList {
     return true;
   }
 
+  // O(1) time
   remove(index) {
     if (index < 0 || index >= this.length) return undefined;
     if (index === 0) return this.shift();
@@ -136,5 +139,27 @@ class DoublyLinkedList {
 
     this.length--;
     return removedNode;
+  }
+
+  reverse() {
+    if (!this.head) return undefined;
+
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+
+    let counter = 0;
+    let prev = null;
+    let next;
+
+    while (counter < this.length) {
+      next = node.next;
+      node.prev = next;
+      node.next = prev;
+      prev = node;
+      node = next;
+      counter++;
+    }
+    return this;
   }
 }
