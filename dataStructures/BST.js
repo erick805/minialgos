@@ -16,24 +16,21 @@ class BST {
     if (!this.root) {
       this.root = node;
       return this;
-    } else {
-      let current = this.root;
-      while (true) {
-        if (val < current.val) {
-          if (current.left === null) {
-            current.left = node;
-            return this;
-          } else {
-            current = current.left;
-          }
-        } else {
-          if (current.right === null) {
-            current.right = node;
-            return this;
-          } else {
-            current = current.right;
-          }
+    }
+    let current = this.root;
+    while (true) {
+      if (val < current.val) {
+        if (current.left === null) {
+          current.left = node;
+          return this;
         }
+        current = current.left;
+      } else {
+        if (current.right === null) {
+          current.right = node;
+          return this;
+        }
+        current = current.right;
       }
     }
   }
