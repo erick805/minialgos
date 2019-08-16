@@ -2,6 +2,12 @@
 
 // LIFO principle = the last element in is the first element out.
 
+// TIME COMPLEXITY
+// insertion - O(1)
+// removal - O(1)
+// searching - O(n)
+// access - O(n)
+
 class Node {
   construtor(val) {
     this.val = val;
