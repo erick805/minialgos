@@ -29,6 +29,12 @@ class Stack {
   }
 
   pop() {
+    if (!this.last) return null;
+    if (this.size === 1) this.last = null;
+
+    let removedNode = this.first;
+    this.first = removedNode.next;
     this.size--;
+    return removedNode.val;
   }
 }
