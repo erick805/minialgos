@@ -2,6 +2,12 @@
 
 // A FIFO data structure.
 
+// TIME COMPLEXITY
+// Insertion - O(1)
+// Removal - O(1)
+// Searching - O(n)
+// Access - O(n)
+
 class Node {
   constructor(value) {
     this.value = value;
@@ -29,7 +35,7 @@ class Queue {
     return ++this.size;
   }
 
-  deque() {
+  dequeue() {
     if (!this.first) return null;
     let currentFirst = this.first;
     if (this.first === this.last) this.last = null;
