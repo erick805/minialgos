@@ -84,4 +84,32 @@ class BST {
 
     return visited;
   }
+
+  dfsPost() {
+    let visited = [];
+    let current = this.root;
+
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      visited.push(node.val);
+    }
+    traverse(current);
+
+    return visited;
+  }
+
+  dfsInOrder() {
+    let visited = [];
+    let current = this.root;
+
+    function traverse(node) {
+      node.left && traverse(node.left);
+      visited.push(node.val);
+      node.right && traverse(node.right);
+    }
+    traverse(current);
+
+    return visited;
+  }
 }
