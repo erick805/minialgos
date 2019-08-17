@@ -35,7 +35,7 @@ class BST {
     }
   }
 
-  find(val) {
+  contains(val) {
     if (!this.root) return false;
     let current = this.root;
     let found = false;
