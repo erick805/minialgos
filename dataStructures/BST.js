@@ -54,4 +54,19 @@ class BST {
     }
     return found;
   }
+
+  bfs() {
+    let visited = [];
+    let queue = [this.root];
+
+    while (queue.length) {
+      let dequedNode = queue.shift();
+      visited.push(dequedNode.val);
+      if (dequedNode.left) queue.push(dequedNode.left);
+
+      if (dequedNode.right) queue.push(dequedNode.right);
+    }
+
+    return visited;
+  }
 }
