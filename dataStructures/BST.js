@@ -1,3 +1,7 @@
+// TIME COMPLEXITY
+// Insertion - O(logn) avg case
+// Searching - O(logn) avg case
+
 class Node {
   constructor(val) {
     this.val = val;
