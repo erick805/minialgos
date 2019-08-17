@@ -69,4 +69,19 @@ class BST {
 
     return visited;
   }
+
+  // DFS - PreOrder
+  dfsPre() {
+    let visited = [];
+    let current = this.root;
+
+    function traverse(node) {
+      visited.push(node.val);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+    traverse(current);
+
+    return visited;
+  }
 }
