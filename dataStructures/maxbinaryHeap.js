@@ -11,6 +11,11 @@
 
 // A binary heap is as compact as possible. All the children of each node are as full as they can be and left children are filled out first.
 
+// TIME COMPLEXITY
+// insertion - O(logn)
+// removal - O(logn)
+// search - O(logn)
+
 class MaxBinaryHeap {
   constructor() {
     this.values = [41, 39, 33, 18, 27, 12, 55];

@@ -1,5 +1,10 @@
 // Min Binary Heap
 
+// TIME COMPLEXITY
+// insertion - O(logn)
+// removal - O(logn)
+// search - O(logn)
+
 class Node {
   constructor(val, priority) {
     this.val = val;
@@ -20,7 +25,7 @@ class PriorityQue {
   bubbleUp() {
     let index = this.values.length - 1;
 
-    let childVal = this.values[index];
+    const childVal = this.values[index];
 
     while (index > 0) {
       let parentIndex = Math.floor((index - 1) / 2);
