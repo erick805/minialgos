@@ -28,6 +28,11 @@ function hash(key, arrayLen) {
 
 // Seperate Chaining
 
+// TIME COMPLEXITY (average case)
+// Insert - O(1)
+// Deletion - O(1)
+// Access - O(1)
+
 class HashTable {
   constructor(size = 53) {
     this.keyMap = new Array(size);
