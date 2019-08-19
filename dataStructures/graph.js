@@ -41,11 +41,23 @@ class Graph {
   }
 
   removeEdge(vertex1, vertex2) {
+    // only works if vertex already exists in graph
     this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(
       val => val !== vertex2
     );
     this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(
       val => val !== vertex1
     );
+  }
+
+  removeVertex(vertex) {
+    for (let key in this.adjacencyList) {
+      if (key === vertex) {
+        for (let val of this.adjacencyList[vertex]) {
+          this.removeEdge(vertex, val);
+        }
+        delete this.adjacencyList[key];
+      }
+    }
   }
 }
