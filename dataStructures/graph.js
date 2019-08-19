@@ -32,6 +32,11 @@ class Graph {
   }
 
   addVertex(vertex) {
-    if (!this.adjancyList[vertex]) this.adjacencyList[vertex] = [];
+    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+  }
+
+  addEdge(vertex1, vertex2) {
+    if (this.adjacencyList[vertex1]) this.adjacencyList[vertex1].push(vertex2);
+    if (this.adjacencyList[vertex2]) this.adjacencyList[vertex2].push(vertex1);
   }
 }
