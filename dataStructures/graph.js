@@ -23,3 +23,15 @@
 
 // Unweighted Graph
 // each edge has no weight associated with it.
+
+// Undirected Graph
+
+class Graph {
+  constructor() {
+    this.adjacencyList = {};
+  }
+
+  addVertex(vertex) {
+    if (!this.adjancyList[vertex]) this.adjacencyList[vertex] = [];
+  }
+}
