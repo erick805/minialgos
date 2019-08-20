@@ -60,4 +60,24 @@ class Graph {
       }
     }
   }
+
+  // dfs recursive
+  dfsRecursive(start) {
+    const results = [];
+    const visited = {};
+    const adjacencyList = this.adjacencyList;
+
+    function dfs(vertex) {
+      if (!vertex) return null;
+      visited[vertex] = true;
+      results.push(vertex);
+      adjacencyList[vertex].forEach(neighbor => {
+        if (!visited[neighbor]) {
+          return dfs(neighbor);
+        }
+      });
+    }
+    dfs(start);
+    return results;
+  }
 }
