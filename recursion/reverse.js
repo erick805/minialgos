@@ -6,7 +6,7 @@
 // TIME COMPLEXITY
 // O(n)
 // SPACE COMPLEXITY
-// O(n)
+// O(n + m)
 
 function reverse(str) {
   if (str.length <= 1) return str;
@@ -30,4 +30,11 @@ function reverse(str) {
   }
 
   return returnStr;
+}
+
+function reverse(str) {
+  return str
+    .split("")
+    .reverse()
+    .join("");
 }
