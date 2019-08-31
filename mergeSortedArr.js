@@ -4,6 +4,11 @@
 //     mergeSortedArr([],[]) => []
 //     mergedSortedArr([1,3], [2]) => [1,2,3]
 
+// TIME COMPLEXITY
+// O(n + m)
+// SPACE COMPLEXITY
+// O(n + m)
+
 function mergeSortedArr(arr1, arr2) {
   if (!arr1.length) return arr2;
   if (!arr2.length) return arr1;
