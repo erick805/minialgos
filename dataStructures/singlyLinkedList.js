@@ -19,7 +19,7 @@ class SinglyLinkedList {
   }
 
   push(val) {
-    let node = new Node(val);
+    const node = new Node(val);
     if (!this.head) {
       this.head = node;
       this.tail = this.head;
@@ -66,7 +66,7 @@ class SinglyLinkedList {
   }
 
   unshift(val) {
-    let node = new Node(val);
+    const node = new Node(val);
     if (!this.head) {
       this.head = node;
       this.tail = this.head;
@@ -93,7 +93,7 @@ class SinglyLinkedList {
   }
 
   set(index, val) {
-    let foundNode = this.get(index);
+    const foundNode = this.get(index);
     if (foundNode) {
       foundNode.val = val;
       return true;
@@ -109,8 +109,8 @@ class SinglyLinkedList {
 
     if (index === 0) return !!this.unshift(val);
 
-    let node = new Node(val);
-    let prevNode = this.get(index - 1);
+    const node = new Node(val);
+    const prevNode = this.get(index - 1);
 
     let temp = prevNode.next;
     prevNode.next = node;
@@ -125,7 +125,7 @@ class SinglyLinkedList {
     if (index === this.length - 1) return this.pop();
     if (index === 0) return this.shift();
 
-    let prevNode = this.get(index - 1);
+    const prevNode = this.get(index - 1);
     let removed = prevNode.next;
     prevNode.next = removed.next;
     this.length--;
