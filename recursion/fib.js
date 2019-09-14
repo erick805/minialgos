@@ -5,6 +5,7 @@
 // (28) => 317811
 
 // fib iterative
+// O(n)
 function fib(num) {
   let fibArr = [0, 1];
 
@@ -14,6 +15,7 @@ function fib(num) {
   return fibArr[num];
 }
 // fib recursive
+// O(2^n)
 function fib(num) {
   if (num <= 2) return 1;
   return fib(num - 1) + fib(num - 2);
