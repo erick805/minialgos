@@ -113,3 +113,19 @@ class BST {
     return visited;
   }
 }
+
+// Time Complexity
+// O(n)
+// Space Complexity
+// O(d) - d is depth of tree
+// **doesn't work on this BST class**
+function validateBst(tree) {
+  return validateBstHelper(tree, -Infinity, Infinity);
+}
+
+function validateBstHelper(tree, min, max) {
+  if (tree === null) return true;
+  if (tree.value < min || tree.value >= max) return false;
+  let leftisValid = validateBstHelper(tree.left, min, tree.value);
+  return leftisValid && validateBstHelper(tree.right, tree.value, max);
+}
