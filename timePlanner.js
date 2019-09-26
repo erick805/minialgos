@@ -30,6 +30,12 @@
 // the matching element + duration has to be bigger than the elements end - start time, for both slots.
 // if that is true return [firstMatchingslot, firstMatchingSlot + duration]
 
+//Time Complexity
+//O(slotsAlength or slotsBLength) time
+
+//Space Complexity
+//O(1) space
+
 function timePlanner(slotsA, slotsB, duration) {
   const slotsALength = slotsA.length;
   const slotsBLength = slotsB.length;
