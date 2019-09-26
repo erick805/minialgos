@@ -14,11 +14,10 @@
 // [60        70]
 // dur = 12
 
-// [10, 20][30, 40]
-// [20, 30][31, 40]
-// dur = 8
-
-// [31, 39]
+// input:  slotsA = [10, 20][30, 40]
+//         slotsB = [20, 30][31, 40]
+//          dur = 8
+// output: [31, 39]
 
 // input:  slotsA = [[10, 50], [60, 120], [140, 210]]
 //         slotsB = [[0, 15], [60, 70]]
@@ -38,15 +37,21 @@ function timePlanner(slotsA, slotsB, duration) {
   if (slotsALength => slotsBLength) {
     for (let i = 0; i < slotsBLength; i++) {
       const startTimeB = slotsB[i][0];
+
       const endTimeB = slotsB[i][1];
       const startTimeA = slotsA[i][0];
       const endTimeA = slotsA[i][1];
 
       if (
-        startTimeB + duration <= endTimeB - startTimeB &&
-        startTimeA + duration <= endTimeA - startTimeA
+        startTimeA <= startTimeB + duration &&
+        startTimeB + duration <= endTimeA
       ) {
-        return [startTimeB, startTimeB + duration];
+        if (endTimeA + duration)
+          if (
+            startTimeA + duration <= endTimeA &&
+            startTimeA + duration <= endTimeB
+          )
+            return [startTimeB, startTimeB + duration];
       }
     }
   } else {
@@ -57,10 +62,14 @@ function timePlanner(slotsA, slotsB, duration) {
       const endTimeB = slotsB[i][1];
 
       if (
-        startTimeA + duration <= endTimeA - startTimeA &&
-        startTimeB + duration <= endTimeB - startTimeB
+        startTimeB <= startTimeA + duration &&
+        startTimeB + duration <= endTimeA
       ) {
-        return [startTimeA, startTimeA + duration];
+        if (
+          startTimeB + duration <= endTimeB &&
+          startTimeB + duration <= endTimeA
+        )
+          return [startTimeA, startTimeA + duration];
       }
     }
   }
