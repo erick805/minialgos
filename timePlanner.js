@@ -14,19 +14,16 @@
 // [60        70]
 // dur = 12
 
-
 // [10, 20][30, 40]
 // [20, 30][31, 40]
 // dur = 8
 
-// [30, 38]
-
+// [31, 39]
 
 // input:  slotsA = [[10, 50], [60, 120], [140, 210]]
 //         slotsB = [[0, 15], [60, 70]]
 //         dur = 12
 // output: [] # since there is no common slot whose duration is 12
-
 
 // Approach
 // Compare each array length and see which one is shorter, and grab the element of the shorter array.
@@ -35,13 +32,37 @@
 // if that is true return [firstMatchingslot, firstMatchingSlot + duration]
 
 function timePlanner(slotsA, slotsB, duration) {
-  const slotsALength = slotsA.length
-  const slotsBLength = slotsB.length
+  const slotsALength = slotsA.length;
+  const slotsBLength = slotsB.length;
 
   if (slotsALength => slotsBLength) {
     for (let i = 0; i < slotsBLength; i++) {
-      let startTime = slotsBlength[i][0]
-      if (startTime === slotsALength[i][0])
+      const startTimeB = slotsB[i][0];
+      const endTimeB = slotsB[i][1];
+      const startTimeA = slotsA[i][0];
+      const endTimeA = slotsA[i][1];
+
+      if (
+        startTimeB + duration <= endTimeB - startTimeB &&
+        startTimeA + duration <= endTimeA - startTimeA
+      ) {
+        return [startTimeB, startTimeB + duration];
+      }
+    }
+  } else {
+    for (let i = 0; i < slotsALength; i++) {
+      const startTimeA = slotsA[i][0];
+      const endTimeA = slotsA[i][1];
+      const startTimeB = slotsB[i][0];
+      const endTimeB = slotsB[i][1];
+
+      if (
+        startTimeA + duration <= endTimeA - startTimeA &&
+        startTimeB + duration <= endTimeB - startTimeB
+      ) {
+        return [startTimeA, startTimeA + duration];
+      }
     }
   }
+  return [];
 }
