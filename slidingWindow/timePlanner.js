@@ -81,3 +81,30 @@ function timePlanner(slotsA, slotsB, duration) {
   }
   return [];
 }
+
+// refactored to multiple pointers
+// Time Complexity
+//O(slotsAlength or slotsBLength) time
+
+//Space Complexity
+//O(1) space
+function timePlanner(slotsA, slotsB, duration) {
+  let indexA = 0;
+  let indexB = 0;
+
+  while (indexA < slotsA.length && indexB < slotsB.length) {
+    let start = Math.max(slotsA[indexA][0], slotsB[indexB][0]);
+    let end = Math.min(slotsA[indexA][1], slotsB[indexB][1]);
+
+    if (start + duration <= end) {
+      return [start, start + duration];
+    }
+
+    if (slotsA[indexA][1] < slotsB[indexB][1]) {
+      indexA++;
+    } else {
+      indexB++;
+    }
+  }
+  return [];
+}
