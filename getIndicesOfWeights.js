@@ -29,7 +29,6 @@ function getIndicesOfItemWeights(arr, limit) {
   }
   return [];
 }
-
 // loop through the array
 // save it in a hash map with the current value as the key and the index as the value.
 // check if the difference is already a key, if it is just return that index, and your current index
