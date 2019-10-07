@@ -33,6 +33,12 @@ The flattened tree should look like:
  * }
  */
 
+// Time Complexity
+// O(n)
+
+// Space Complexity
+// O(n)
+
 function flatten(root) {
   let head = root;
   let stack = [];
