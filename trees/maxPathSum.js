@@ -42,7 +42,28 @@ Output: 42
 // There could be negative numbers!
 
 // this might not work because this always includes the curr node value!
+// this also does not work because by adding the sub trees and the root node it cancels our definition for a path.
 // declare a temp variable = max (left sub tree + curr node, curr node)
 // declare a temp2 variable = max (temp + right sub tree ,temp)
+
+// Edge Case
+// If any of your max path sums of your sub trees resembles a "triangle" shape. - ignore the root node.
+// We can compute not just the mps of each node, but also the mps of each node's branch. - not in the form of a triangle!
+// By finding the mps of only the branches, we can add them.
+
+// But you also need to keep track of your mps of your triangles.
+
+// Approach
+// Compute the mps of each node's branch, not the triangle.
+// Then compute the mps of root node, in triangle.
+// Compute the running max path sum as well.
+
+// first return - as a branch
+// Left sum as branch, Left Sum (regardless) = mps(L)
+// Right sum as a brach, Right Sum (regardless ) = mps(L)
+// Maximum child sum as a branch = max (left sum as a branch, right sum as a branch)
+// Maximum sum a a branch = max (MCSB + curr node, curr node)
+
+// second return - as a triangle
 
 function maxPathSum(tree) {}
