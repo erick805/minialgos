@@ -78,10 +78,14 @@ Output: 42
 // Space Complexity
 // O(logn) space
 
-function maxPathSum(tree) {}
+function maxPathSum(tree) {
+  let [_, maxSum] = findMaxSum(tree);
+
+  return maxSum;
+}
 
 function findMaxSum(tree) {
-  if (!tree) return [0, 0];
+  if (tree === null) return [0, 0];
   // find the left max sum as a branch, and left max path sum
   let [leftMaxSumAsBranch, leftMaxPathSum] = findMaxSum(tree.left);
   // find the right max sum as a branch, and right max path sum
@@ -97,4 +101,8 @@ function findMaxSum(tree) {
     leftMaxSumAsBranch + value + rightMaxSumAsBranch,
     maxSumAsBranch
   );
+
+  let maxPathSum = Math.max(leftMaxPathSum, maxSumAsRootNode, rightMaxPathSum);
+
+  return [maxSumAsBranch, maxPathSum];
 }
