@@ -59,11 +59,17 @@ Output: 42
 // Compute the running max path sum as well.
 
 // first return - as a branch
-// Left sum as branch, Left Sum (regardless) = mps(L)
-// Right sum as a brach, Right Sum (regardless ) = mps(L)
-// Maximum child sum as a branch = max (left sum as a branch, right sum as a branch)
-// Maximum sum a a branch = max (MCSB + curr node, curr node)
+// *LSB* Left sum as branch, *LS* Left Sum (regardless) = mps(L)
+// *RSB* Right sum as a brach, *RS* Right Sum (regardless ) = mps(L)
+// *MCSB* Maximum child sum as a branch = max (left sum as a branch, right sum as a branch)
+// *MSB* Maximum sum of a branch = max (MCSB + curr node, curr node)
 
 // second return - as a triangle
+// *MST* Maximum as a triangle = max (MSB, LSB + V + RSB)
+
+// third return - running max path sum
+// *RMPS* max(LS, RS, MST)
+
+// final return RMPS
 
 function maxPathSum(tree) {}
