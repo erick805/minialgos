@@ -70,6 +70,31 @@ Output: 42
 // third return - running max path sum
 // *RMPS* max(LS, RS, MST)
 
-// final return RMPS
+// final return max(MSB, RMPS)
+
+// Time Complexity
+// O(n) time
+
+// Space Complexity
+// O(logn) space
 
 function maxPathSum(tree) {}
+
+function findMaxSum(tree) {
+  if (!tree) return [0, 0];
+  // find the left max sum as a branch, and left max path sum
+  let [leftMaxSumAsBranch, leftMaxPathSum] = findMaxSum(tree.left);
+  // find the right max sum as a branch, and right max path sum
+  let [rightMaxSumAsBranch, rightMaxPathSum] = findMaxSum(tree.right);
+  // This could be negative
+  let maxChildSumAsBranch = Math.max(leftMaxSumAsBranch, rightMaxSumAsBranch);
+
+  let value = tree.val;
+  // find the maximum of the branches, either just the max of the child sums, or max of child sums + root
+  let maxSumAsBranch = Math.max(maxChildSumAsBranch + value, value);
+  // either triangle, or just the max of the branches.
+  let maxSumAsRootNode = Math.max(
+    leftMaxSumAsBranch + value + rightMaxSumAsBranch,
+    maxSumAsBranch
+  );
+}
