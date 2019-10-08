@@ -34,3 +34,15 @@ Output: 42
 /*
 
 */
+
+// A path is a valid path as long as the path for each node does not connnect more than 2 nodes.
+
+//Recursive solution
+// mps helper function - gets the max path sum for each sub tree
+// There could be negative numbers!
+
+// this might not work because this always includes the curr node value!
+// declare a temp variable = max (left sub tree + curr node, curr node)
+// declare a temp2 variable = max (temp + right sub tree ,temp)
+
+function maxPathSum(tree) {}
