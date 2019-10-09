@@ -34,10 +34,10 @@ The flattened tree should look like:
  */
 
 // Time Complexity
-// O(n)
+// O(n) time
 
 // Space Complexity
-// O(n)
+// O(n) space
 
 function flatten(root) {
   let head = root;
