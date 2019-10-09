@@ -17,6 +17,12 @@ Explanation:
 // top to bottom usually means BFS
 // right most node on each level is what we will add to our visible list.
 
+//Time Complexity
+// O(n) time
+
+//Space Complexity
+//O(n) space
+
 function rightSideView(root) {
   if (!root) return [];
   let next = [{ node: root, level: 0 }];
