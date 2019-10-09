@@ -1,6 +1,6 @@
 // Queues
 
-// A FIFO data structure.
+// A FIFO (First In First Out) data structure.
 
 // TIME COMPLEXITY
 // Insertion - O(1)

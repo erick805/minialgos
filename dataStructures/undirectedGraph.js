@@ -24,7 +24,7 @@
 // Unweighted Graph
 // each edge has no weight associated with it.
 
-// Undirected Graph
+// This is an example of an Undirected Graph.
 
 class Graph {
   constructor() {
