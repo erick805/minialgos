@@ -36,18 +36,23 @@ Node 4's value is 4, and it has two neighbors: Node 1 and 3.
 // node = 1
 
 // v = # number of vertices in the graph
+// Time Complexity
+// O(v^2) time
 
-function cloneGraph(node) {
+// Space Complexity
+// O(v) space
+
+function cloneGraph(graph) {
   // base case when graph is empty return null
-  if (!node) return null;
+  if (!graph) return null;
   // if not empty, initiliaze queue with reference node: node
-  let pq = [node];
+  let pq = [graph];
   // create root node (reference node)
-  let rootCopy = new Node(node.val, []);
+  let rootCopy = new Node(graph.val, []);
   // initialize hashMap
   // put the root in hashMap
   let hashMap = new Map();
-  hashMap.set(node, rootCopy);
+  hashMap.set(graph, rootCopy);
   // perform bfs, continue as long as queue is not empty
   while (pq.length) {
     // take the current element from queue
@@ -67,5 +72,5 @@ function cloneGraph(node) {
       hashMap.get(currNode).neighbors.push(hashMap.get(neighbor));
     }
   }
-  return hashMap.get(node);
+  return hashMap.get(graph);
 }
