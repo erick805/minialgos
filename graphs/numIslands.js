@@ -44,5 +44,32 @@ function numIslands(grid) {
       }
     }
   }
-  return numIslands;
+  return totalIslands;
+}
+
+// i represents the vertical direction
+// j represents the horizontal direction
+function dfs(grid, i, j) {
+  // **base case** - if we go out of bounds or we are on water
+  if (
+    i < 0 ||
+    i >= grid.length ||
+    j < 0 ||
+    j >= grid[i].length ||
+    grid[i][j] === "0"
+  ) {
+    return 0;
+  }
+  // else if the current value were on is a "1", sink it.
+  grid[i][j] = "0";
+  // recursive call to check neighbors below it.
+  dfs(grid, i + 1, j);
+  // recursive call to check neighbors above it.
+  dfs(grid, i - 1, j);
+  // recursive call to check neighbors to the right.
+  dfs(grid, i, j + 1);
+  // recursive call to check neighbors to the left.
+  dfs(grid, i, j - 1);
+  // return 1 so we can add to our total islands.
+  return 1;
 }
