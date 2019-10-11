@@ -22,6 +22,12 @@ Edge Case:
 ([0,1,0]) => [1,0,0]
 */
 
+// Time Complexity
+// O(n)
+
+// Space Complexity
+// O(1)
+
 function moveZerosToEnd(arr) {
   if (!arr.length) return [];
   if (arr.length === 1) return arr;
