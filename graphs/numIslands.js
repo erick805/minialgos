@@ -21,3 +21,28 @@ Input:
 
 Output: 3
 */
+
+/*
+([]) => 0
+([[1]]) => 0
+([[0]]) => 0
+([[1,0]]) => 0
+*/
+
+function numIslands(grid) {
+  // if we have no grid, we just return zero islands
+  if (!grid || grid.length === 0) return 0;
+
+  let totalIslands = 0;
+
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[i].length; j++) {
+      // we encountered an island
+      if (grid[i][j] === "1") {
+        // do a depth first search and check each of it's neighbors
+        totalIslands += dfs(grid, i, j);
+      }
+    }
+  }
+  return numIslands;
+}
