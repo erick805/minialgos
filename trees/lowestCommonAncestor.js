@@ -25,7 +25,7 @@ All of the nodes' values will be unique.
 p and q are different and both values will exist in the binary tree.
 */
 
-// DFS recursive approach
+// Recursive approach
 // Time Complexity
 // O(n)
 
@@ -36,10 +36,10 @@ function lowestCommonAncestor(root, p, q) {
   if (!root) return null;
   if (root === p || root === q) return root;
 
-  let left = lowestCommonAncestor(root.left, p, q);
-  let right = lowestCommonAncestor(root.right, p, q);
+  let leftCommonAncestor = lowestCommonAncestor(root.left, p, q);
+  let rightCommonAncestor = lowestCommonAncestor(root.right, p, q);
 
-  if (left && right) return root;
-  else if (left) return left;
-  else return right;
+  if (leftCommonAncestor && rightCommonAncestor) return root;
+  else if (leftCommonAncestor) return leftCommonAncestor;
+  else return rightCommonAncestor;
 }
