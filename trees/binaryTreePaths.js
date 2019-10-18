@@ -18,6 +18,12 @@ Output: ["1->2->5", "1->3"]
 Explanation: All root-to-leaf paths are: 1->2->5, 1->3
 */
 
+//Time Complexity
+//O(n)
+
+//Space Complexity
+//O(n)
+
 function binaryTreePaths(root) {
   const paths = [];
 
