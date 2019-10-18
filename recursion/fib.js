@@ -20,3 +20,19 @@ function fib(num) {
   if (num <= 2) return 1;
   return fib(num - 1) + fib(num - 2);
 }
+
+// fib memoization
+// O(n)
+function fib(num, memo = {}) {
+  if (memo[num]) {
+    return memo[num];
+  }
+
+  if (num <= 2) {
+    return 1;
+  } else {
+    let fibValue = fib(num - 1, memo) + fib(num - 2, memo);
+    memo[num] = fibValue;
+    return fibValue;
+  }
+}
