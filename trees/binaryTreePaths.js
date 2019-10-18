@@ -17,3 +17,22 @@ Output: ["1->2->5", "1->3"]
 
 Explanation: All root-to-leaf paths are: 1->2->5, 1->3
 */
+
+function binaryTreePaths(root) {
+  const paths = [];
+
+  function constructPaths(start, path) {
+    if (start) {
+      path += String(start.val);
+      if (!start.left && !start.right) {
+        paths.push(path);
+      } else {
+        path += "->";
+        constructPaths(start.left, path);
+        constructPaths(start.right, path);
+      }
+    }
+  }
+  constructPaths(root, "");
+  return paths;
+}
