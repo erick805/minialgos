@@ -12,3 +12,31 @@ Why is this always true? Well, if inputNode was inserted to tree prior to succes
 
 Now, if inputNode was inserted to the tree after succesorNode was, then since inputNode.key is smaller than successorNode.key, but also larger than all other keys smaller than successorNode.key, inputNode has to be in succesorNode's left subtree.
 */
+
+// Time Complexity
+// O(logn) or depth of tree
+
+// Space Complexity
+// O(1)
+
+function findInOrderSuccessor(inputNode) {
+  // return the node with minimum key in right subtree
+  if (inputNode.right !== null) return findMinKeyWithinTree(inputNode.right);
+
+  let ancestor = inputNode.parent;
+  let child = inputNode;
+  // travel up using the parent pointer until you see
+  // a node which is the left child of its parent, the parent of
+  // such a node is the successorNode.
+  while (ancestor !== null && child === ancestor.right) {
+    child = ancestor;
+    ancestor = child.parent;
+  }
+
+  return ancestor;
+}
+
+function findMinKeyWithinTree(inputNode) {
+  while (inputNode.left !== null) inputNode = inputNode.left;
+  return inputNode;
+}
