@@ -1,6 +1,21 @@
 /*
-Given a binary tree, return all root-to-leaf paths.
+A binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child.
 
+Each node is a constructor class with a .val, .left, and .right property.
+
+class Node {
+  constructor(val) {
+    this.val = val
+    this.left = null
+    this.right = null
+  }
+}
+
+.val = the current value of node
+.left = left child
+.right = right child
+
+Given a binary tree, return all root-to-leaf paths. If there are no paths, just return an empty array.
 Note: A leaf is a node with no children.
 
 Example:
