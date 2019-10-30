@@ -33,27 +33,39 @@ Output: ["1->2->5", "1->3"]
 Explanation: All root-to-leaf paths are: 1->2->5, 1->3
 */
 
-//Time Complexity
-//O(n)
+// Recursive Solution
+// Time Complexity
+// O(n)
 
-//Space Complexity
-//O(n)
+// Space Complexity
+// O(n)
 
 function binaryTreePaths(root) {
+  // create our paths array
   const paths = [];
-
+  // helper function to populate our paths array
   function constructPaths(start, path) {
+    // if our current node exists
     if (start) {
+      // add to our current path
       path += String(start.val);
+      // if we hit a leaf
       if (!start.left && !start.right) {
+        // we are done, lets move on to the next path.
         paths.push(path);
       } else {
+        // if not we have more children
+        // create the connection and attach to current path.
         path += "->";
+        // do a recursive call on left subtree
         constructPaths(start.left, path);
+        // do a recursive call on right subtree
         constructPaths(start.right, path);
       }
     }
   }
+  // call our function with our tree, and an empty string
   constructPaths(root, "");
+  // return our root to leaf paths
   return paths;
 }
