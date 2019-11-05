@@ -20,12 +20,22 @@ function TreeNode(val) {
 }
 */
 
-/*
-Max diameter with root node
-Find the height of the left subtree + height of the right subtree + 1 = diameter of tree with root node
+function diameterOfBinaryTree(root) {
+  let diameter = 0;
 
-Max diameter without root node
-max(height of left subtree, height of right sub tree) = diameter of tree without root node
+  findDiameter(root);
 
-max(max diameter with root node, max diameter without root node) = max diameter of tree
-*/
+  return diameter;
+
+  function findDiameter(node) {
+    if (node === null) return 0;
+    // find diameter of left sub tree
+    const leftDiameter = findDiameter(node.left);
+    // find diameter of right sub tree
+    const rightDiameter = findDiameter(node.right);
+    // update the diameter at every node
+    diameter = Math.max(diameter, leftDiameter + rightDiameter);
+    // find the largest number of edges so far
+    return 1 + Math.max(leftDiameter, rightDiameter);
+  }
+}
