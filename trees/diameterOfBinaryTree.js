@@ -41,7 +41,7 @@ function diameterOfBinaryTree(root) {
     const rightDiameter = findDiameter(node.right);
     // update the diameter at every node
     diameter = Math.max(diameter, leftDiameter + rightDiameter);
-    // find the largest number of edges so far
+    // update the largest number of edges so far including node
     return 1 + Math.max(leftDiameter, rightDiameter);
   }
 }
