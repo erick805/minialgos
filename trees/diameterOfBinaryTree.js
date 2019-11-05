@@ -20,6 +20,12 @@ function TreeNode(val) {
 }
 */
 
+// Time Complexity
+// O(n) time
+
+// Space Complexity
+// O(depth of tree) space
+
 function diameterOfBinaryTree(root) {
   let diameter = 0;
 
