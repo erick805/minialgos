@@ -19,3 +19,13 @@ function TreeNode(val) {
   this.left = this.right = null;
 }
 */
+
+/*
+Max diameter with root node
+Find the height of the left subtree + height of the right subtree + 1 = diameter of tree with root node
+
+Max diameter without root node
+max(height of left subtree, height of right sub tree) = diameter of tree without root node
+
+max(max diameter with root node, max diameter without root node) = max diameter of tree
+*/
