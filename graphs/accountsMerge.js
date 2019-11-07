@@ -19,3 +19,55 @@ We could return these lists in any order, for example the answer [['Mary', 'mary
 ['John', 'john00@mail.com', 'john_newyork@mail.com', 'johnsmith@mail.com']] would still be accepted.
 
 */
+
+function accountsMerge(accounts) {
+  // create a set of unique root emails
+  const rootEmails = new Set();
+  // create an owner object to store user with root email
+  const owner = {};
+  // create a parent child relationship
+  const parent = {};
+  const children = {};
+
+  // loop through our accounts array to check each account
+  for (let account of accounts) {
+    // destructure into user, root email, and rest of emails
+    const [user, rootEmail, ...emails] = account;
+    // check if rootEmail has a parent
+    const r1 = find(rootEmail);
+    // set user with root email
+    owner[rootEmail] = user;
+    // set children as the parent or root email
+    children[r1] = children[r1] || [rootEmail];
+    // add root to root emails
+    rootEmails.add(r1);
+
+    // check the rest of our emails
+    for (let email of emails) {
+      // check if email has a parent email
+      const r2 = find(email);
+      // if child email does not equal our parent email - then we know it is unique
+      if (r2 !== r1) {
+        // set the parent child relationship
+        parent[r2] = r1;
+        // push into our children array if our children already exists or the new emails
+        children[r1].push(...(children[r2] ? children[r2] : [email]));
+        // we can delete the child since we have it in our children array
+        rootEmails.delete(r2);
+        // remove the children from our child object as well.
+        delete children[r2];
+      }
+    }
+  }
+  // take our unique root emails and render the owner with each of it's children email sorted
+  return [...rootEmails].map(rootEmail => [
+    owner[rootEmail],
+    ...children[rootEmail].sort()
+  ]);
+
+  // this function checks if their is a parent and returns the parent, if there is no parent then it returns the element since itself is a parent.
+  function find(element) {
+    parent[element] = parent[element] || element;
+    return element === parent[element] ? element : find(parent[element]);
+  }
+}
