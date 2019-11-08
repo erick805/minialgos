@@ -11,6 +11,11 @@ stringPermutations('app');
 stringPermutations('nn'); //should return  [ 'nn' ]
 */
 // Recursive Approach
+// Time Complexity
+// O(n!)
+
+// Space Complexity
+// O(n!)
 
 function strPermutationsRecur(str) {
   // base case
