@@ -12,6 +12,11 @@ stringPermutations('nn'); //should return  [ 'nn' ]
 */
 
 // Iterative approach
+// Time Complexity
+// O(n!) time
+
+// Space Complexity
+// O(n!) space
 
 function strPermutationsIter(str) {
   let results = [];
