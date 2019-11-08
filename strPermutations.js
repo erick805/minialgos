@@ -10,6 +10,29 @@ stringPermutations('app');
 // should return  [ 'app','pap','ppa']
 stringPermutations('nn'); //should return  [ 'nn' ]
 */
+// Recursive Approach
+
+function strPermutationsRecur(str) {
+  // base case
+  if (str.length === 1) return [str];
+
+  const results = [];
+
+  let i = 0;
+  while (i < str.length) {
+    // grab first letter of string
+    const letter = str[i];
+    // get other letters
+    const otherLetters = str.slice(0, i) + str.slice(i + 1);
+    // get permutations of other letters
+    const perms = strPermutationsRecur(otherLetters);
+    // attach letter to start of other permutations
+    perms.forEach(perm => results.push(letter + perm));
+    // go through any remaining letters, avoid duplicates at same callstack level
+    while (str[i] === letter) i++;
+  }
+  return results.sort();
+}
 
 // Iterative approach
 // Time Complexity
