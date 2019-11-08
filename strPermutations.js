@@ -10,3 +10,36 @@ stringPermutations('app');
 // should return  [ 'app','pap','ppa']
 stringPermutations('nn'); //should return  [ 'nn' ]
 */
+
+// Iterative approach
+
+function strPermutationsIter(str) {
+  let results = [];
+  let letters = str.split("");
+  // add first letter (as an array) into results
+  results.push([letters.shift()]);
+
+  while (letters.length) {
+    let currLetter = letters.shift();
+    let tempResults = [];
+
+    results.forEach(function(currResult) {
+      for (let i = 0; i <= currResult.length; i++) {
+        // make a copy so we can modify
+        let tmp = currResult.slice();
+        // insert letter into current position at i
+        tmp.splice(i, 0, currLetter);
+        tempResults.push(tmp);
+      }
+    });
+    // overwrite previous results
+    results = tempResults;
+  }
+  return (
+    results
+      .map(perm => perm.join(""))
+      // filter out non-unique perms, only keep first occurence
+      .filter((perm, index, self) => self.indexOf(perm) === index)
+      .sort()
+  );
+}
