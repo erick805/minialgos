@@ -15,3 +15,5 @@ Specifically, we want to do the transformation in place. After the transformatio
 The figure below shows the transformed BST. The solid line indicates the successor relationship, while the dashed line means the predecessor relationship.
 
 ![](tree-to-doubly-list3.png)
+
+Credits to: [leetcode.com](https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/description/)
