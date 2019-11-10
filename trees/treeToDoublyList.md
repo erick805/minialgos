@@ -17,3 +17,36 @@ The figure below shows the transformed BST. The solid line indicates the success
 ![](tree-to-doubly-list3.png)
 
 Credits to: [leetcode.com](https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/description/)
+
+Solution:
+
+```js
+function treeToDoublyList(root) {
+  let head = null;
+  let prev;
+
+  if (root === null) return root;
+
+  function dfsInOrder(node) {
+    if (node === null) return;
+    dfsInOrder(node.left);
+
+    if (head === null) {
+      head = node;
+      prev = node;
+    } else {
+      node.left = prev;
+      prev.right = node;
+      prev = node;
+    }
+
+    dfsInOrder(node.right);
+  }
+
+  dfsInOrder(root);
+  prev.right = head;
+  head.left = prev;
+
+  return head;
+}
+```
