@@ -18,6 +18,9 @@ The figure below shows the transformed BST. The solid line indicates the success
 
 Credits to: [leetcode.com](https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/description/)
 
+Time Complexity: O(n)
+Space Complexity: O(depth of tree)
+
 Solution:
 
 ```js
