@@ -22,31 +22,37 @@ Solution:
 
 ```js
 function treeToDoublyList(root) {
+  // set head and previous variables
   let head = null;
   let prev;
-
+  // edge case if we have no root just return the root
   if (root === null) return root;
 
+  // recursive depth first search in order
   function dfsInOrder(node) {
+    // base case - if we hit a leaf just return
     if (node === null) return;
+    // call on left to get the smallest number
     dfsInOrder(node.left);
-
+    // this case allows us to grab the smallest node as the head and set prev
     if (head === null) {
       head = node;
       prev = node;
+      // this is what reassigns the tree to a doubly ll, reassign previous to keep traversal
     } else {
       node.left = prev;
       prev.right = node;
       prev = node;
     }
-
+    // depth first search on right side
     dfsInOrder(node.right);
   }
-
+  // call depth first search on our root
   dfsInOrder(root);
+  // this assigns the last case where we need tail's right to point to head and head's left to point to tail
   prev.right = head;
   head.left = prev;
-
+  // return the tree
   return head;
 }
 ```
