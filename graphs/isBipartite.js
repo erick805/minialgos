@@ -32,3 +32,27 @@ The graph looks like this:
 We cannot find a way to divide the set of nodes into two independent subsets.
 
 */
+
+function isBipartite(graph) {
+  const colors = new Map();
+
+  for (let edges = 0; edges < graph.length; edges++) {
+    if (!dfs(graph, colors, edges, 0)) return false;
+  }
+  return true;
+}
+
+function dfs(graph, colors, edges, color) {
+  if (!colors.has(edges)) {
+    colors.set(edges, color);
+
+    for (const vertex of graph[edges]) {
+      if (
+        !dfs(graph, colors, vertex, 1 - color) ||
+        colors.get(vertex) === color
+      )
+        return false;
+    }
+  }
+  return true;
+}
