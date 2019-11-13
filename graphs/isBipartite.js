@@ -33,26 +33,28 @@ We cannot find a way to divide the set of nodes into two independent subsets.
 
 */
 
-function isBipartite(graph) {
+const isBipartite = graph => {
   const colors = new Map();
 
-  for (let edges = 0; edges < graph.length; edges++) {
-    if (!dfs(graph, colors, edges, 0)) return false;
-  }
-  return true;
-}
-
-function dfs(graph, colors, edges, color) {
-  if (!colors.has(edges)) {
-    colors.set(edges, color);
-
-    for (const vertex of graph[edges]) {
-      if (
-        !dfs(graph, colors, vertex, 1 - color) ||
-        colors.get(vertex) === color
-      )
-        return false;
+  for (let i = 0; i < graph.length; i++) {
+    if (!dfs(graph, colors, i, 0)) {
+      return false;
     }
   }
+
   return true;
-}
+};
+
+const dfs = (graph, colors, u, color) => {
+  if (!colors.has(u)) {
+    colors.set(u, color);
+
+    for (const v of graph[u]) {
+      if (!dfs(graph, colors, v, 1 - color) || colors.get(v) === color) {
+        return false;
+      }
+    }
+  }
+
+  return true;
+};
