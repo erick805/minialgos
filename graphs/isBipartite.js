@@ -33,6 +33,7 @@ We cannot find a way to divide the set of nodes into two independent subsets.
 
 */
 
+// DFS recursive solution
 const isBipartite = graph => {
   const colors = new Map();
 
@@ -52,6 +53,39 @@ const dfs = (graph, colors, u, color) => {
     for (const v of graph[u]) {
       if (!dfs(graph, colors, v, 1 - color) || colors.get(v) === color) {
         return false;
+      }
+    }
+  }
+
+  return true;
+};
+
+// BFS solution
+
+const isBipartite = graph => {
+  const colors = new Map();
+
+  for (let i = 0; i < graph.length; i++) {
+    if (!bfs(graph, colors, i)) return false;
+  }
+  return true;
+};
+
+const bfs = (graph, colors, u) => {
+  if (!colors.has(u)) {
+    const queue = [u];
+    colors.set(u, 0);
+
+    while (queue.length > 0) {
+      u = queue.shift();
+
+      for (const v of graph[u]) {
+        if (colors.get(v) === colors.get(u)) return false;
+
+        if (!colors.has(v)) {
+          queue.push(v);
+          colors.set(v, 1 - colors.get(u));
+        }
       }
     }
   }
