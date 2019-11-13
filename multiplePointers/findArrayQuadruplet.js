@@ -19,6 +19,12 @@ input: arr =[-1,-5,0,0,5] target = 0
 output: [-5,0,0,5]
 */
 
+/*
+Time Complexity: O(n^3)
+
+Space Complexity: O(1)
+*/
+
 function findArrayQuadruplet(arr, target) {
   // if array length is less than four return an empty array
   if (arr.length < 4) return [];
