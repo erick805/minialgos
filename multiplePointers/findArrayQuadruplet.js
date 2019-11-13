@@ -18,3 +18,25 @@ output: []
 input: arr =[-1,-5,0,0,5] target = 0
 output: [-5,0,0,5]
 */
+
+function findArrayQuadruplet(arr, target) {
+  if (arr.length < 4) return [];
+
+  arr.sort((a, b) => a - b);
+
+  for (let i = 0; i <= arr.length - 4; i++) {
+    for (let j = i + 1; j <= arr.length - 3; j++) {
+      let remainder = target - (arr[i] + arr[j]);
+
+      let low = j + 1;
+      let high = arr.length - 1;
+
+      while (high > low) {
+        if (arr[low] + arr[high] < remainder) low++;
+        else if (arr[low] + arr[high] > remainder) high--;
+        else return [arr[i], arr[j], arr[low], arr[high]];
+      }
+    }
+  }
+  return [];
+}
