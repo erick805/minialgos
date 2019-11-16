@@ -4,3 +4,24 @@ Implement a document scanning function wordCountEngine, which receives a string 
 The engine should strip out punctuation (even in the middle of a word) and use whitespaces to seperate words.
 
 */
+
+const wordCountEngine = document => {
+  document = document.toLowerCase();
+  const alphabet = "abcdefghijklmnopqrstuvwxyz ";
+  let newAlpha = "";
+  for (let i = 0; i < document.length; i++) {
+    if (alphabet.includes(document[i])) {
+      newAlpha += document[i];
+    }
+  }
+  const wordFreq = {};
+
+  newAlpha = newAlpha.split(" ");
+
+  for (let word of newAlpha) {
+    if (!wordFreq[word]) wordFreq[word] = 1;
+    else wordFreq[word]++;
+  }
+
+  return Object.entries(wordFreq).sort((a, b) => b[1] - a[1]);
+};
