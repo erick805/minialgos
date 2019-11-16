@@ -5,6 +5,11 @@ The engine should strip out punctuation (even in the middle of a word) and use w
 
 */
 
+/*
+Time Complexity: O(n * m)
+Space Complexity: O(1)
+*/
+
 const wordCountEngine = document => {
   document = document.toLowerCase();
   const alphabet = "abcdefghijklmnopqrstuvwxyz ";
