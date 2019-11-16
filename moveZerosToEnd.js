@@ -37,7 +37,7 @@ function moveZerosToEnd(arr) {
   for (let read = 0; read < arr.length; read++) {
     // if the value is not zero
     if (arr[read] !== 0) {
-      // set the current value of arr[read] to arr[write]
+      // set the current value of arr[write] to arr[read]
       arr[write] = arr[read];
       // increment write to keep count of written values
       write += 1;
