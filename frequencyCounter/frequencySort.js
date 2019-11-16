@@ -36,6 +36,11 @@ Explanation:
 Note that 'A' and 'a' are treated as two different characters.
 */
 
+/*
+Time Complexity: O(nlogn)
+Space Complexity: O(n)
+*/
+
 const frequencySort = str => {
   if (str.length < 2) return str;
 
