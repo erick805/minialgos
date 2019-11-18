@@ -19,3 +19,27 @@ output: true
 ip = '192.168.123.456'
 output: false
 */
+
+function validateIP(ip) {
+  if (ip.length < 7) return false;
+  ip = ip.split(".");
+
+  if (ip.length !== 4) return false;
+
+  for (let chunk of ip) {
+    if (!fitsOneByte(chunk)) return false;
+  }
+
+  return true;
+}
+
+function fitsOneByte(chunk) {
+  if (chunk.length === 0) return false;
+
+  for (let val of chunk) {
+    if (val < "0" || val > "9") return false;
+  }
+
+  if (chunk.length >= 2 && chunk[0] === "0") return false;
+  return 0 <= Number(chunk) && Number(chunk) <= 255;
+}
