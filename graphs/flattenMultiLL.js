@@ -15,3 +15,25 @@ Input:
 Output:
 1-2-3-7-8-11-12-9-10-4-5-6-NULL
 */
+
+function flattenMultiLL(head) {
+  if (head === null) return head;
+  const stack = [];
+  let cur = head;
+
+  while (cur !== null) {
+    if (cur.child !== null) {
+      if (cur.next !== null) {
+        stack.push(cur.next);
+      }
+      cur.next = cur.child;
+      if (cur.next !== null) cur.next.prev = cur;
+      cur.child = null;
+    } else if (cur.next === null && stack.length) {
+      cur.next = stack.pop();
+      if (cur.next !== null) cur.next.prev = cur;
+    }
+    cur = cur.next;
+  }
+  return head;
+}
