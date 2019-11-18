@@ -1,4 +1,4 @@
-// Write a function called sameFrequency. Given two positive integers, find out if the two numers have the same frequency of digits
+// Write a function called sameFrequency. Given two positive integers, find out if the two numbers have the same frequency of digits
 // return true if they do, otherwise return false.
 
 // Ex 1) (182,218) => true
@@ -17,9 +17,9 @@ function sameFrequency(num1, num2) {
 
   if (num1.length !== num2.length) return false;
 
-  let count = {};
+  const count = {};
 
-  for (let val of num1) {
+  for (const val of num1) {
     if (!(val in count)) {
       count[val] = 1;
     } else {
