@@ -3,6 +3,14 @@ Implement a document scanning function wordCountEngine, which receives a string 
 
 The engine should strip out punctuation (even in the middle of a word) and use whitespaces to seperate words.
 
+Examples:
+
+input:  document = "Practice makes perfect. you'll only
+                    get Perfect by practice. just practice!"
+
+output: [ ["practice", "3"], ["perfect", "2"],
+          ["makes", "1"], ["youll", "1"], ["only", "1"],
+          ["get", "1"], ["by", "1"], ["just", "1"] ]
 */
 
 /*
