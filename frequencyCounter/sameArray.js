@@ -63,18 +63,18 @@ const sameArray = (arrOne, arrTwo) => {
   if (arrOne.length !== arrTwo.length) {
     return false;
   }
-  let frequencyCounterOne = {};
-  let frequencyCounterTwo = {};
+  const frequencyCounterOne = {};
+  const frequencyCounterTwo = {};
 
-  for (let val of arrOne) {
+  for (const val of arrOne) {
     frequencyCounterOne[val] = (frequencyCounterOne[val] || 0) + 1;
   }
 
-  for (let val of arrTwo) {
+  for (const val of arrTwo) {
     frequencyCounterTwo[val] = (frequencyCounterTwo[val] || 0) + 1;
   }
 
-  for (let key in frequencyCounterOne) {
+  for (const key in frequencyCounterOne) {
     if (!(key ** 2 in frequencyCounterTwo)) {
       return false;
     }
