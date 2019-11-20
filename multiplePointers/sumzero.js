@@ -1,8 +1,8 @@
 // Write a function that takes in a sorted array and returns the first pair that sums up to zero in an array.
-// else return undefined.
+// If not return undefined.
 
 // TIME COMPLEXITY
-// O(n) time complexity
+// O(logn) time complexity
 
 // SPACE COMPLEXITY
 // O(1) space complexity

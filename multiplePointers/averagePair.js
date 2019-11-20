@@ -1,5 +1,5 @@
 // Write a function that takes a sorted array of integers and a target average.
-// returns a boolean on whether any number in the given array can equal to the target average.
+// Return a boolean on whether any two numbers in the given array can equal to the target average.
 
 // Ex 1) ([1,2,3], 2.5) => true
 //       ([],2) => false

@@ -37,8 +37,8 @@ function timePlanner(slotsA, slotsB, duration) {
   let indexB = 0;
 
   while (indexA < slotsA.length && indexB < slotsB.length) {
-    let start = Math.max(slotsA[indexA][0], slotsB[indexB][0]);
-    let end = Math.min(slotsA[indexA][1], slotsB[indexB][1]);
+    const start = Math.max(slotsA[indexA][0], slotsB[indexB][0]);
+    const end = Math.min(slotsA[indexA][1], slotsB[indexB][1]);
 
     if (start + duration <= end) {
       return [start, start + duration];
