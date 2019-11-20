@@ -1,4 +1,4 @@
-// write a function collect strings which takes in a object and returns an array with all the string values.
+// Write a function collect strings which takes in a object and returns an array with all the string values.
 
 // const obj = {
 //   stuff: "foo",
@@ -16,12 +16,12 @@
 //   }
 // }
 
-// collectStrings(obj) // ["foo", "bar", "baz"])
+// collectStrings(obj) => ["foo", "bar", "baz"])
 
-function collectStrings(obj) {
-  let stringsArr = [];
+const collectStrings = obj => {
+  const stringsArr = [];
 
-  function gatherStrings(o) {
+  const gatherStrings = o => {
     for (let key in o) {
       if (typeof o[key] === "string") {
         stringsArr.push(o[key]);
@@ -29,9 +29,9 @@ function collectStrings(obj) {
         return gatherStrings(o[key]);
       }
     }
-  }
+  };
 
   gatherStrings(obj);
 
   return stringsArr;
-}
+};
