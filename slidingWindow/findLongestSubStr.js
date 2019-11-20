@@ -1,4 +1,4 @@
-// write a function that finds the longest sub string in a string and returns the length of the longest substring.
+// Write a function that finds the longest sub string in a string and returns the length of the longest substring.
 // substring has to have all distinct characters.
 // otherwise return 0
 
@@ -9,9 +9,9 @@
 // TIME COMPLEXITY
 // O(n) time
 
-function findLongestSubstring(str) {
+const findLongestSubstring = str => {
   let longest = 0;
-  let seen = {};
+  const seen = {};
   let start = 0;
 
   for (let i = 0; i < str.length; i++) {
@@ -25,4 +25,4 @@ function findLongestSubstring(str) {
     seen[char] = i + 1;
   }
   return longest;
-}
+};
