@@ -20,3 +20,19 @@ Input: ["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","tes
 Output: 2
 Explanation: "testemail@leetcode.com" and "testemail@lee.tcode.com" actually receive mails
 */
+
+const numUniqueEmails = emails => {
+  const uniqueEmails = new Set();
+
+  for (let email of emails) {
+    let [user, domain] = email.split("@");
+    domain = "@" + domain;
+    user = user.split("+")[0];
+
+    let dotOmitted = user.split(".").join("");
+
+    uniqueEmails.add((dotOmitted += domain));
+  }
+
+  return uniqueEmails.size;
+};
