@@ -12,4 +12,11 @@ If you add a plus ("+") in the local name, everything after the first plus sign 
 It is possible to use both of these rules at the same time.
 
 Given a list of emails, we send one email to each address in the list. How many different addresses actually receive mails?
-/*
+
+Example 1:
+
+Input: ["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]
+
+Output: 2
+Explanation: "testemail@leetcode.com" and "testemail@lee.tcode.com" actually receive mails
+*/
