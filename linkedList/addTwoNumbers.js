@@ -13,6 +13,9 @@ Explanation: 342 + 465 = 807
 (2 -> 4 -> 3) + (0 -> 6 -> 4) => 2 -> 0 -> 8
 */
 
+// Time Complexity: O(n + m)
+// Space Complexity: O(n + m)
+
 const addTwoNumbers = (l1, l2) => {
   // create dummy linked list
   let sumLL = new ListNode(null);
