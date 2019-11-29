@@ -5,6 +5,9 @@ Return a deep copy of the list. You must return the copy of the given head as a 
 Example 1:
 ![](copy-random-list.png)
 
+Time Complexity: O(n)
+Space Complexity: O(n)
+
 ```js
 /*
 
