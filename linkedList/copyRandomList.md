@@ -22,6 +22,35 @@ Explanation:
 Node 1's value is 1, both of its next and random pointer points to Node 2.
 Node 2's value is 2, its next pointer points to null and its random pointer points to itself.
 */
+
+const copyRandomList = head => {
+  const copy = new Node(null);
+  let curCopy = copy;
+
+  let cur = head;
+  const cloneMap = new Map();
+
+  while (cur) {
+    let temp = new Node(cur.val);
+    curCopy.next = temp;
+    curCopy = temp;
+
+    cloneMap.set(cur, temp);
+    cur = cur.next;
+  }
+
+  cur = head;
+
+  while (cur) {
+    let origRandom = cur.random;
+    if (origRandom) {
+      cloneMap.get(cur).random = cloneMap.get(origRandom);
+    }
+    cur = cur.next;
+  }
+
+  return copy.next;
+};
 ```
 
 Credits to: [leetcode.com](https://leetcode.com/problems/copy-list-with-random-pointer/)
