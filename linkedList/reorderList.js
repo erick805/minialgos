@@ -17,36 +17,49 @@ const reorderList = head => {
   // if there is no head return
   if (!head || !head.next) return;
   // initiate two pointers to split our linked list in half
-  let slow = head;
-  let fast = head;
+  let [slow, fast] = split(head);
+  // slow should be our mid node
+  let middle = slow;
+  let cur = slow.next;
+  // reverse second linked list from middle
+  reverse(cur, middle);
+  // start reorder one by one
+  mergeReorder(head, middle.next, middle);
+};
+
+const split = listHead => {
+  let slow = listHead;
+  let fast = listHead;
   // as long as there's more to traverse with fast
   while (fast.next && fast.next.next) {
     // we can divide our ll into two
     fast = fast.next.next;
     slow = slow.next;
   }
-  // slow should be our mid node
-  let middle = slow;
-  let cur = slow.next;
 
-  while (cur.next) {
-    let next = cur.next;
-    cur.next = next.next;
-    next.next = middle.next;
-    middle.next = next;
+  return [slow, fast];
+};
+
+const reverse = (curNode, beg) => {
+  while (curNode.next) {
+    let nextNode = curNode.next;
+    curNode.next = nextNode.next;
+    nextNode.next = beg.next;
+    beg.next = nextNode;
   }
-  // 2 -> 4 -> 3 -> null
-  // start reorder one by one
-  let p1 = head;
-  let p2 = middle.next;
+};
 
-  while (p1 !== middle) {
+const mergeReorder = (l1, l2, mid) => {
+  let p1 = l1;
+  let p2 = l2;
+
+  while (p1 !== mid) {
     let p1Next = p1.next;
     let p2Next = p2.next;
 
     p1.next = p2;
     p2.next = p1Next;
-    middle.next = p2Next;
+    mid.next = p2Next;
 
     p1 = p1Next;
     p2 = p2Next;
