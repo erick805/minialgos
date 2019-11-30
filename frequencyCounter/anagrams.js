@@ -52,7 +52,7 @@ const anagram = (str1, str2) => {
   }
 
   for (let val of str2) {
-    if (!(val in count)) return false;
+    if (!count[val]) return false;
     else count[val] -= 1;
   }
 
