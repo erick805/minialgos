@@ -12,6 +12,9 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 1,1,5 → 1,5,1
 */
 
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
 const nextPermutation = nums => {
   if (!nums || nums.length === 0) return nums;
 
