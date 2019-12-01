@@ -18,3 +18,12 @@ Input: "abcabcabcabc"
 Output: True
 Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)
 */
+
+const repeatedSubStrPattern = str => {
+  // add a copy of the string to itself and cut off head and tail.
+  // if string is inside the new string, it can be constructed with copies of it's substrings
+  return str
+    .concat(str.slice())
+    .slice(1, -1)
+    .includes(str);
+};
