@@ -26,3 +26,32 @@ Input: name = "laiden", typed = "laiden"
 Output: true
 Explanation: It's not necessary to long press any character.
 */
+
+const isLongPressedName = (name, typed) => {
+  let index = 0;
+  let letter;
+  let letterCount;
+  let typedIndex = 0;
+  let typedCount;
+
+  while (index < name.length) {
+    letter = name[index];
+    letterCount = 1;
+    index++;
+
+    while (name[index] === letter) {
+      letterCount++;
+      index++;
+    }
+    typedCount = 0;
+
+    while (typedIndex < typed.length && typed[typedIndex] === letter) {
+      typedCount++;
+      typedIndex++;
+    }
+
+    if (letterCount > typedCount) return false;
+  }
+
+  return index === name.length && typedIndex === typed.length;
+};
