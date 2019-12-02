@@ -56,13 +56,17 @@ The input sentence will always start with a letter and end with '#', and only on
 The number of complete sentences that to be searched won't exceed 100. The length of each sentence including those in the historical data won't exceed 100.
 */
 
+// First character indexing approach
 const AutocompleteSystem = function(sentences, times) {
+  // create a hashmap of letters and object sentence frequency relationships
   this.searchHistory = {};
   "abcdefghijklmnopqrstuvwxyz".split("").forEach(char => {
     this.searchHistory[char] = {};
   });
+  // initiate variables
   this.inputStr = "";
   this.MAX_OUTPUT = 3;
+  // loop through our frequency and populate our search history with corresponding character and sentence frequency
   for (let i = 0; i < times.length; i++) {
     const sentence = sentences[i];
     this.searchHistory[sentence[0]][sentence] = times[i];
@@ -70,27 +74,34 @@ const AutocompleteSystem = function(sentences, times) {
 };
 
 AutocompleteSystem.prototype.input = function(char) {
+  // if our char is # grab the firstchar and if inputStr doesn't exist set freq to zero
   if (char === "#") {
     const firstChar = this.inputStr[0];
     if (!this.searchHistory[firstChar][this.inputStr]) {
       this.searchHistory[firstChar][this.inputStr] = 0;
     }
+    // save into our search history
     this.searchHistory[firstChar][this.inputStr]++;
     this.inputStr = "";
     return [];
   }
+  // else it is a valid character
   this.inputStr += char;
+  // grab the first character
   const firstChar = this.inputStr[0];
+  // grab only the filtered sentences that starts with the current input string
   const filtered = Object.keys(this.searchHistory[firstChar]).filter(
     sentence => {
       return sentence.startsWith(this.inputStr);
     }
   );
+
   filtered.sort((a, b) => {
     const aFreq = this.searchHistory[firstChar][a];
     const bFreq = this.searchHistory[firstChar][b];
-
+    // sort by highest frequency, if they are the same freq return the less unicode of the two.
     return aFreq !== bFreq ? bFreq - aFreq : a > b ? 1 : -1;
   });
+  // only return the top 3
   return filtered.slice(0, this.MAX_OUTPUT);
 };
