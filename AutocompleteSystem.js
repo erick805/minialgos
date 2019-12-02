@@ -55,3 +55,42 @@ Note:
 The input sentence will always start with a letter and end with '#', and only one blank space will exist between two words.
 The number of complete sentences that to be searched won't exceed 100. The length of each sentence including those in the historical data won't exceed 100.
 */
+
+const AutocompleteSystem = function(sentences, times) {
+  this.searchHistory = {};
+  "abcdefghijklmnopqrstuvwxyz".split("").forEach(char => {
+    this.searchHistory[char] = {};
+  });
+  this.inputStr = "";
+  this.MAX_OUTPUT = 3;
+  for (let i = 0; i < times.length; i++) {
+    const sentence = sentences[i];
+    this.searchHistory[sentence[0]][sentence] = times[i];
+  }
+};
+
+AutocompleteSystem.prototype.input = function(char) {
+  if (char === "#") {
+    const firstChar = this.inputStr[0];
+    if (!this.searchHistory[firstChar][this.inputStr]) {
+      this.searchHistory[firstChar][this.inputStr] = 0;
+    }
+    this.searchHistory[firstChar][this.inputStr]++;
+    this.inputStr = "";
+    return [];
+  }
+  this.inputStr += char;
+  const firstChar = this.inputStr[0];
+  const filtered = Object.keys(this.searchHistory[firstChar]).filter(
+    sentence => {
+      return sentence.startsWith(this.inputStr);
+    }
+  );
+  filtered.sort((a, b) => {
+    const aFreq = this.searchHistory[firstChar][a];
+    const bFreq = this.searchHistory[firstChar][b];
+
+    return aFreq !== bFreq ? bFreq - aFreq : a > b ? 1 : -1;
+  });
+  return filtered.slice(0, this.MAX_OUTPUT);
+};
