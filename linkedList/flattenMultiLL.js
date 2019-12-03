@@ -41,7 +41,7 @@ function flattenMultiLL(head) {
       // if their is a node, set the node's previous to curr
       if (cur.next !== null) cur.next.prev = cur;
     }
-    // traverse to the next node
+    // traverse to the next level or node
     cur = cur.next;
   }
   return head;
