@@ -18,3 +18,14 @@ Output: false
 Explanation: You will always arrive at index 3 no matter what. Its maximum
              jump length is 0, which makes it impossible to reach the last index.
 */
+
+const canJump = nums => {
+  let maxJumps = nums[0];
+
+  for (let i = 1; i < nums.length; i++) {
+    if (i > maxJumps) return false;
+    maxJumps = Math.max(maxJumps, nums[i] + i);
+  }
+
+  return true;
+};
