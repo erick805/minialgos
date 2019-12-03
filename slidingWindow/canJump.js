@@ -19,6 +19,9 @@ Explanation: You will always arrive at index 3 no matter what. Its maximum
              jump length is 0, which makes it impossible to reach the last index.
 */
 
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
 const canJump = nums => {
   let maxJumps = nums[0];
 
