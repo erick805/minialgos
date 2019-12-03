@@ -17,3 +17,20 @@ Input: [4,3,2,1]
 Output: [4,3,2,2]
 Explanation: The array represents the integer 4321.
 */
+
+const plusOne = nums => {
+  // loop from back to access last digit
+  for (let i = nums.length - 1; i >= 0; i--) {
+    // if our current digit is less than 9 add one
+    if (nums[i] < 9) {
+      nums[i] = nums[i] + 1;
+      return nums;
+      // otherwise it's a nine and we need to carry over
+    } else {
+      nums[i] = 0;
+    }
+  }
+  // edge case if we only contain nine in our array
+  nums.unshift(1);
+  return nums;
+};
