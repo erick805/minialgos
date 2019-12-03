@@ -22,17 +22,26 @@ function flattenMultiLL(head) {
   let cur = head;
 
   while (cur !== null) {
+    // if our current node has a child and a next
     if (cur.child !== null) {
       if (cur.next !== null) {
+        // push the next node into stack
         stack.push(cur.next);
       }
+      // point the cur next to child
       cur.next = cur.child;
+      // if we have pointer to child, set child's previous to current
       if (cur.next !== null) cur.next.prev = cur;
+      // severe child refernce
       cur.child = null;
+      // if we are at the end of the list and we have something in our stack
     } else if (cur.next === null && stack.length) {
+      // set the current's next to recent popped node
       cur.next = stack.pop();
+      // if their is a node, set the node's previous to curr
       if (cur.next !== null) cur.next.prev = cur;
     }
+    // traverse to the next node
     cur = cur.next;
   }
   return head;
