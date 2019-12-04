@@ -7,6 +7,9 @@ Input: S = "ADOBECODEBANC", T = "ABC"
 Output: "BANC"
 */
 
+// Time Complexity: O(n + m)
+// Space Complexity: O(n + m)
+
 const minWindow = (str, targetStr) => {
   if (!str.length) return "";
   // store all our keys and frequences from target string
