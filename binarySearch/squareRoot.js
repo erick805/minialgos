@@ -12,6 +12,9 @@ input:  x = 9, n = 2
 output: 3
 */
 
+// Time Complexity: O(log(x))
+// Space Complexity: O(1)
+
 const squareRoot = (x, n) => {
   // if our base is zero, the square root is zero
   if (x === 0) return 0;
