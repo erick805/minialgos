@@ -33,3 +33,42 @@ Output: 0
 
 Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
 */
+
+const transformationLength = (begWord, endWord, wordList) => {
+  const dict = new Set(wordList);
+  // if our set does not have the final end word - we can't reach it - return zero.
+  if (!dict.has(endWord)) return 0;
+
+  let listLen = 1;
+  let queue = [begWord];
+  const seen = new Set(queue);
+
+  // BFS
+  while (queue.length) {
+    const next = [];
+    for (let word of queue) {
+      if (word === endWord) return listLen;
+
+      const letters = word.split("");
+
+      for (let i = 0; i < letters.length; i++) {
+        for (let j = 0; j < 26; j++) {
+          letters[i] = String.fromCharCode(97 + j);
+          let temp = letters.join("");
+          // if we haven't seen it yet and it is a word within our list, add it
+          if (!seen.has(temp) && dict.has(temp)) {
+            next.push(temp);
+            seen.add(temp);
+          }
+          // reset it back
+          letters[i] = word[i];
+        }
+      }
+    }
+    // move to next value - increment length by one
+    queue = next;
+    listLen++;
+  }
+
+  return 0;
+};
