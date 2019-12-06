@@ -36,7 +36,7 @@ Explanation: The endWord "cog" is not in wordList, therefore no possible transfo
 
 const transformationLength = (begWord, endWord, wordList) => {
   const dict = new Set(wordList);
-  // if our set does not have the final end word - we can't reach it - return zero.
+  // if our set does not have the final end word - we can't reach it - return zero
   if (!dict.has(endWord)) return 0;
 
   let listLen = 1;
@@ -69,6 +69,6 @@ const transformationLength = (begWord, endWord, wordList) => {
     queue = next;
     listLen++;
   }
-
+  // if we never enter our loop - we don't have any transformations
   return 0;
 };
