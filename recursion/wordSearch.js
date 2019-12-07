@@ -18,6 +18,7 @@ Given word = "ABCB", return false.
 const wordSearch = (board, word) => {
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
+      // if our current letter starts at first letter and ends at last letter - return true
       if (board[i][j] === word[0] && dfs(board, i, j, 0, word)) return true;
     }
   }
@@ -26,7 +27,7 @@ const wordSearch = (board, word) => {
 
 const dfs = (board, i, j, count, word) => {
   if (count === word.length) return true;
-
+  // out of bounds or not equal to current letter
   if (
     i < 0 ||
     i >= board.length ||
@@ -35,14 +36,18 @@ const dfs = (board, i, j, count, word) => {
     board[i][j] !== word[count]
   )
     return false;
+  // set our current letter
   let temp = board[i][j];
-
+  // flip it
   board[i][j] = "";
+  // check all possibilities
   const found =
     dfs(board, i + 1, j, count + 1, word) ||
     dfs(board, i - 1, j, count + 1, word) ||
     dfs(board, i, j + 1, count + 1, word) ||
     dfs(board, i, j - 1, count + 1, word);
+  // reset letter back
   board[i][j] = temp;
+  // return if found or not found
   return found;
 };
