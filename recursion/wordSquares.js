@@ -94,6 +94,7 @@ class Trie {
         res.push(str);
       }
     };
+
     findWords(res, cur, prefix);
     return res;
   }
