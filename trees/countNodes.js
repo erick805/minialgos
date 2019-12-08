@@ -17,6 +17,16 @@ Input:
 Output: 6
 */
 
+/*
+Complete Tree:
+Time Complexity: O(n * h) h = height of tree
+Space Complexity: O(h or logn)
+
+Perfect Tree:
+Time Complexity: O(h) h = height of tree
+Space Complexity: O(1)
+*/
+
 const countNodes = root => {
   if (!root) return 0;
   // keep count of height for far side left and far side right
