@@ -29,3 +29,29 @@ Note:
 1 <= A[i], B[i] <= 6
 2 <= A.length == B.length <= 20000
 */
+
+const minDominoRotations = (A, B) => {
+  let flips;
+
+  const checkNotNum = num => {
+    let countA = 0;
+    let countB = 0;
+
+    // since they are equal length we can do this
+    for (let i = 0; i < A.length; i++) {
+      // if both our current dominoes don't include the number then it does not match for both sets.
+      if (A[i] !== num && B[i] !== num) return -1;
+      // tally how much each domino set does not contain the current num
+      if (A[i] !== num) countA++;
+      if (B[i] !== num) countB++;
+    }
+    // return the lowest amount of possible flips
+    return Math.min(countA, countB);
+  };
+
+  flips = checkNotNum(A[0]);
+  // if it did not return -1, this means the matching value is in A
+  if (flips !== -1) return flips;
+  // if it did - check the matching value in B
+  return checkNotNum(B[0]);
+};
