@@ -19,8 +19,8 @@ Output: 6
 
 /*
 Complete Tree:
-Time Complexity: O(n * h) h = height of tree
-Space Complexity: O(h or logn)
+Time Complexity: O(n)
+Space Complexity: O(h or logn) h = height of tree
 
 Perfect Tree:
 Time Complexity: O(h) h = height of tree
