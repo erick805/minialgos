@@ -30,6 +30,9 @@ Note:
 2 <= A.length == B.length <= 20000
 */
 
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
 const minDominoRotations = (A, B) => {
   let flips;
 
