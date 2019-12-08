@@ -16,3 +16,28 @@ Input:
 
 Output: 6
 */
+
+const countNodes = root => {
+  if (!root) return 0;
+  // keep count of height for far side left and far side right
+  let hLeft = 0;
+  let hRight = 0;
+  // initiate pointers to root
+  let pLeft = root;
+  let pRight = root;
+  // as long as pLeft exists, traverse and get the height
+  while (pLeft) {
+    ++hLeft;
+    pLeft = pLeft.left;
+  }
+  // likewise for right
+  while (pRight) {
+    ++hRight;
+    pRight = pRight.pRight;
+  }
+  // if they are equal we know it is a perfect tree, and we can return 2 to height - 1 to get total number of nodes
+  if (hLeft === hRight) return 2 ** hLeft - 1;
+
+  // else brute force because it is not a perfect binary tree
+  return countNodes(root.left) + countNodes(root.right) + 1;
+};
