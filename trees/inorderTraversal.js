@@ -15,6 +15,9 @@ Output: [1,3,2]
 Challenge: Approach the solution iteratively
 */
 
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
 const inorderTraversal = root => {
   if (!root) return [];
 
