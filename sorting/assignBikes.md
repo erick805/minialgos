@@ -6,31 +6,31 @@ The Manhattan distance between two points p1 and p2 is | p1.x - p2.x | + | p1.y 
 
 Return a vector of length N workers, where vector[i] is the index (starting at 0 index) of the bike that is assigned to the ith worker.
 
-Example 1:
+**Example 1**:
 
 ![](assign-bikes-1.png)
 
-Input: workers = [[0,0],[2,1]], bikes = [[1,2],[3,3]]
+**Input**: workers = [[0,0],[2,1]], bikes = [[1,2],[3,3]]
 
-Output: [1,0]
+**Output**: [1,0]
 
-Explanation:
+**Explanation**:
 
 Worker 1 grabs Bike 0 as they are closest (without ties), and Worker 0 is assigned Bike 1. So the output is [1, 0].
 
-Example 2:
+**Example 2**:
 
 ![](assign-bikes-2.png)
 
-Input: workers = [[0,0],[1,1],[2,0]], bikes = [[1,0],[2,2],[2,1]]
+**Input**: workers = [[0,0],[1,1],[2,0]], bikes = [[1,0],[2,2],[2,1]]
 
-Output: [0,2,1]
+**Output**: [0,2,1]
 
-Explanation:
+**Explanation**:
 
 Worker 0 grabs Bike 0 at first. Worker 1 and Worker 2 share the same distance to Bike 2, thus Worker 1 is assigned to Bike 2, and Worker 2 will take Bike 1. So the output is [0,2,1].
 
-Note:
+**Note**:
 
 1. 0 <= workers[i][j], bikes[i][j] < 1000>
 2. All workers and bike locations are distinct.
