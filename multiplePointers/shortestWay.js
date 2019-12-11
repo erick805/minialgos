@@ -24,3 +24,26 @@ Output: 3
 
 Explanation: The target string can be constructed as follows "xz" + "y" + "xz"
 */
+
+const shortestWay = (source, target) => {
+  if (!source || !target) return -1;
+
+  let targetP = 0;
+  let prevP;
+
+  let count = 0;
+
+  while (prevP !== targetP) {
+    count++;
+    prevP = targetP;
+
+    for (let char of source) {
+      const targetChar = target[targetP];
+
+      if (targetChar === char) targetP++;
+      if (!target[targetP]) return count;
+    }
+  }
+  // if pointer has not moved from last time - return -1
+  return -1;
+};
