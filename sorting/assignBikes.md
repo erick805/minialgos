@@ -35,3 +35,36 @@ Worker 0 grabs Bike 0 at first. Worker 1 and Worker 2 share the same distance to
 1. 0 <= workers[i][j], bikes[i][j] < 1000>
 2. All workers and bike locations are distinct.
 3. 1 <= workers.length <= bikes.length <= 1000
+
+```js
+const assignBikes = (workers, bikes) => {
+  if (!workers) return [];
+
+  const getDist = ([x1, y1], [x2, y2]) => Math.abs(x1 - x2) + Math.abs(y1 - y2);
+
+  const dist = [];
+  // bucket sort
+  for (let i = 0; i < workers.length; i++) {
+    for (let j = 0; j < bikes.length; j++) {
+      const d = getDist(workers[i], bikes[j]);
+
+      if (!dist[d]) dist[d] = [];
+      dist[d].push([i, j]);
+    }
+  }
+  const assigned = [];
+  // loop through distance
+  for (const bucket of dist) {
+    if (bucket) {
+      for (const [i, j] of bucket) {
+        if (workers[i] && bikes[j]) {
+          assigned[i] = j;
+          workers[i] = null;
+          bikes[j] = null;
+        }
+      }
+    }
+  }
+  return assigned;
+};
+```
