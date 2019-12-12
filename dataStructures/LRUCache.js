@@ -50,3 +50,78 @@ class LRUCache {
     }
   }
 }
+
+// doubly LL + hashMap
+
+const LRUCache = function(capacity) {
+  this.capacity = capacity;
+  this.length = 0;
+  this.head = null;
+  this.tail = null;
+  this._map = {};
+};
+
+LRUCache.prototype.get = function(key) {
+  if (this._map[key]) {
+    const { value, prev, next } = this._map[key];
+
+    if (prev) prev.next = next;
+    if (next) next.prev = prev || next.prev;
+
+    if (this.tail === this._map[key]) {
+      this.tail = prev || this._map[key];
+    }
+    // set new head's previous to null
+    this._map[key].prev = null;
+    if (this.head !== this._map[key]) {
+      // set new head's next to current head
+      this._map[key].next = this.head;
+      // set previous head's prev to new head
+      this.head.prev = this._map[key];
+    }
+    this.head = this._map[key];
+
+    return value;
+  }
+  return -1;
+};
+
+LRUCache.prototype.put = function(key, value) {
+  if (this._map[key]) {
+    this._map[key].value = value;
+    // bubble up
+    this.get(key);
+  } else {
+    this._map[key] = { key, value, prev: null, next: null };
+
+    if (this.head) {
+      // point current head's prev to node
+      this.head.prev = this._map[key];
+      // set current node's next to head
+      this._map[key].next = this.head;
+    }
+    // set node as head - in front
+    this.head = this._map[key];
+
+    if (!this.tail) {
+      this.tail = this._map[key];
+    }
+    this.length++;
+  }
+
+  if (this.length > this.capacity) {
+    let removedKey = this.tail.key;
+
+    if (this.tail.prev) {
+      // point new tail's next to null
+      this.tail.prev.next = null;
+      // move tail to prev
+      this.tail = this.tail.prev;
+      this._map[removedKey].prev = null;
+    }
+
+    delete this._map[removedKey];
+
+    this.length--;
+  }
+};
