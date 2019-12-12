@@ -20,3 +20,33 @@ cache.get(1);       // returns -1 (not found)
 cache.get(3);       // returns 3
 cache.get(4);       // returns 4
 */
+
+// hashtable approach
+
+class LRUCache {
+  constructor(capacity) {
+    this.capacity = capacity;
+    this._cache = new Map();
+  }
+
+  get(key) {
+    if (!this._cache.has(key)) return -1;
+
+    const v = this._cache.get(key);
+    // delete and set removes key and puts the key as most recently used
+    this._cache.delete(key);
+    this._cache.set(key, v);
+    return this._cache.get(key);
+  }
+
+  put(key, value) {
+    if (this._cache.has(key)) this._cache.delete(key);
+
+    this._cache.set(key, value);
+
+    if (this._cache.size > this.capacity) {
+      // keys().next().value returns the first item's key in hashtable - or least recently used
+      this._cache.delete(this._cache.keys().next().value);
+    }
+  }
+}
