@@ -20,3 +20,34 @@ Note:
 1. A, B are arrays with the same length, and that length will be in the range [1, 1000].
 2. A[i], B[i] are integer values in the range [0, 2000].
 */
+
+const minSwap = (A, B) => {
+  const len = A.length;
+  let pt0 = 0;
+  let pt1 = 1;
+
+  for (let i = 1; i < len; i++) {
+    const next0 = Math.min(
+      // no flips at index
+      isInc(A[i - 1], A[i], B[i - 1], B[i]) ? pt0 : Infinity,
+      // one flip at index
+      isInc(B[i - 1], A[i], A[i - 1], B[i]) ? pt1 : Infinity
+    );
+
+    const next1 =
+      1 +
+      Math.min(
+        isInc(A[i - 1], B[i], B[i - 1], A[i]) ? pt0 : Infinity,
+        isInc(B[i - 1], B[i], A[i - 1], A[i]) ? pt1 : Infinity
+      );
+
+    pt0 = next0;
+    pt1 = next1;
+  }
+
+  return Math.min(pt0, pt1);
+};
+
+const isInc = (a, b, c, d) => {
+  return a < b && c < d;
+};
