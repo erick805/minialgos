@@ -21,6 +21,9 @@ Note:
 2. A[i], B[i] are integer values in the range [0, 2000].
 */
 
+// Time Complexity: O(n)
+// Space Complexity: O(n) or O(1)
+
 const minSwap = (A, B) => {
   const len = A.length;
   let pt0 = 0;
