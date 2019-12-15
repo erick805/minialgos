@@ -20,3 +20,27 @@ Note:
 3. 0 <= points[i][1] <= 40000
 4. All points are distinct.
 */
+
+const minAreaRect = points => {
+  if (points.length < 4) return 0;
+
+  const coords = new Map();
+
+  for (const [x, y] of points) {
+    if (!coords.has(x)) coords.set(x, new Set());
+    coords.get(x).add(y);
+  }
+
+  let minArea = Infinity;
+  for (const [x1, y1] of points) {
+    for (const [x2, y2] of points) {
+      if (x1 === x2 || y1 === y2) continue;
+
+      if (coords.get(x1).has(y2) && coords.get(x2).has(y1)) {
+        minArea = Math.min(Math.abs(x1 - x2) * Math.abs(y1 - y2));
+      }
+    }
+  }
+
+  return minArea === Infinity ? 0 : minArea;
+};
