@@ -20,6 +20,8 @@ Note:
 3. 0 <= points[i][1] <= 40000
 4. All points are distinct.
 */
+// Time Complexity: O(n^2) worst case
+// Space Complexity: O(n)
 
 const minAreaRect = points => {
   if (points.length < 4) return 0;
