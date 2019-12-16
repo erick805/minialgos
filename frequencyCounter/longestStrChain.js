@@ -20,3 +20,26 @@ Note:
 2. 1 <= words[i].length <= 16
 3. words[i] only consists of English lowercase letters.
 */
+
+const longestStrChain = words => {
+  const map = new Map();
+  let longestLen = 0;
+  words.sort((a, b) => a.length - b.length); // sort by increasing length
+
+  for (const word of words) {
+    let level = 1;
+    for (let i = 0; i < word.length; i++) {
+      // grabs permutations of other letters
+      const otherWords = word.slice(0, i) + word.slice(i + 1);
+      // if our map already contains our other word grab current level and set it one higher.
+      if (map.has(otherWords)) {
+        level = map.get(otherWords) + 1;
+        break; // break because we only need to find one permutation
+      }
+    }
+    map.set(word, level); // set current word, and what level it is on
+    longestLen = Math.max(longestLen, level); // reassign length at every level
+  }
+
+  return longestLen;
+};
