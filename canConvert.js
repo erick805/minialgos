@@ -23,18 +23,18 @@ Note:
 // Time Complexity: O(n)
 // Space Complexity: O(n)
 
-const canCovert = (str1, str2) => {
+const canConvert = (str1, str2) => {
   if (str1 === str2) return true;
 
   const map = new Map();
 
   for (let i = 0; i < str1.length; i++) {
     // if our mapped letter has more than one value - return false
-    if (map.has(str1[i]) && map.get(str[i]) !== str2[i]) return false;
+    if (map.has(str1[i]) && map.get(str1[i]) !== str2[i]) return false;
     map.set(str1[i], str2[i]); // map initial letter : letter
   }
 
-  const set = new Set(Object.values(map));
+  const set = new Set(map.values(map));
 
   return set.size < 26; // return true if we only have unique letters
 };
