@@ -122,3 +122,34 @@ const countSmaller = nums => {
 
   return items.map(item => item.count);
 };
+
+// binary search approach
+
+const countSmaller = nums => {
+  const count = new Array(nums.length).fill(0);
+  const arr = [];
+
+  for (let i = nums.length - 1; i >= 0; i--) {
+    const index = lowerBound(arr, nums[i]);
+    count[i] = index;
+    arr.splice(index, 0, nums[i]); // insert into our sorted arr
+  }
+
+  return count;
+};
+
+const lowerBound = (arr, target) => {
+  let left = 0;
+  let right = arr.length;
+  while (left < right) {
+    const mid = Math.floor((left + right) / 2);
+
+    if (arr[mid] >= target) {
+      right = mid;
+    } else {
+      left = mid + 1;
+    }
+  }
+
+  return left;
+};
