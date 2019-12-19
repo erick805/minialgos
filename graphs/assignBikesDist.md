@@ -33,3 +33,32 @@ We first assign bike 0 to worker 0, then assign bike 1 to worker 1 or worker 2, 
 1. 0 <= workers[i][0], workers[i][1], bikes[i][0], bikes[i][1] < 1000
 2. All worker and bike locations are distinct.
 3. 1 <= workers.length <= bikes.length <= 10
+
+```js
+// Backtracking
+
+const assignBikesDist = (workers, bikes) => {
+  const usedBikes = {};
+  let res = Infinity;
+
+  const occupy = (i, dist) => {
+    if (i === workers.length) {
+      res = Math.min(res, dist);
+      return;
+    }
+    for (let j = 0; j < bikes.length; j++) {
+      if (!usedBikes[j]) {
+        usedBikes[j] = true;
+        const d = getDist(bikes[j], workers[i]);
+        occupy(i + 1, dist + d);
+        usedBikes[j] = false; // reset
+      }
+    }
+  };
+
+  occupy(0, 0);
+  return res;
+};
+
+const getDist = ([x1, y1], [x2, y2]) => Math.abs(x1 - x2) + Math.abs(y1 - y2);
+```
