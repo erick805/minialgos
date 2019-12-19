@@ -8,6 +8,8 @@ Given n non-negative integers representing an elevation map where the width of e
 **Output:** 6
 
 ```js
+// Time Complexity: O(n)
+
 const trapWater = blocks => {
   const rightMaxes = [];
   let rightMax = 0;
