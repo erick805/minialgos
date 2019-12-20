@@ -1,4 +1,4 @@
-// Write a function maxSubSum that takes in an array of mixed integers, n number of consecutive numers to equal sum and returns the largest sum possible of n consecutive numbers.
+// Write a function maxSubSum that takes in an array of mixed integers, n number of consecutive numbers to equal sum and returns the largest sum possible of n consecutive numbers.
 
 // return null otherwise
 
