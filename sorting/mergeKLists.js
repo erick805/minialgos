@@ -21,6 +21,10 @@ function ListNode(val) {
 */
 
 // PriorityQueue
+
+// Time Complexity: O(nlog(k)) k = number of sorted lists
+// Space Complexity: O(k)
+
 const mergeKLists = lists => {
   const pq = new PriorityQueue();
   lists.forEach(list => {
