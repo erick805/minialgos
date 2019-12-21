@@ -158,3 +158,34 @@ const merge = (a, b) => {
 
   return dummy.next;
 };
+
+// another divide + conquer approach
+
+const mergeKLists = lists => {
+  return helper(lists);
+};
+
+const merge = (left, right) => {
+  if (!left) return right;
+  else if (!right) return left;
+  else if (left.val < right.val) {
+    left.next = merge(left.next, right);
+    return left;
+  } else {
+    right.next = merge(left, right.next);
+    return right;
+  }
+};
+
+const helper = (lists, start = 0, end = lists.length - 1) => {
+  if (start === end) return lists[start];
+  else if (start < end) {
+    const mid = parseInt((start + end) / 2);
+    const left = helper(lists, start, mid);
+    const right = helper(lists, mid + 1, end);
+
+    return merge(left, right);
+  } else {
+    return null;
+  }
+};
