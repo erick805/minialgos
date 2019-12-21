@@ -60,6 +60,7 @@ const networkDelayTime = (times, N, K) => {
   return visitedList.length !== N ? -1 : minTime;
 };
 
+// create adjacency list
 const createGraph = (numNodes, edges) => {
   const graph = {};
 
@@ -74,6 +75,7 @@ const createGraph = (numNodes, edges) => {
   return graph;
 };
 
+// pop smallest node based on time
 const popSmallestTime = list => {
   let min = Infinity;
 
