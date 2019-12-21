@@ -120,3 +120,41 @@ class PriorityQueue {
     }
   }
 }
+
+// using JS .shift() method - optimize space
+
+const mergeKLists_shift = lists => {
+  // keep merging until we hit length zero
+  if (lists.length === 0) return null;
+
+  while (lists.length > 1) {
+    // shift out first two elements and merge
+    const a = lists.shift();
+    const b = lists.shift();
+
+    const merged = mergedLists(a, b);
+    lists.push(merged);
+  }
+
+  return lists[0]; // return first item in list
+};
+
+const merge = (a, b) => {
+  const dummy = new ListNode(null);
+  let temp = dummy;
+
+  while (a !== null && b !== null) {
+    if (a.val < b.val) {
+      temp.next = a;
+      a = a.next;
+    } else {
+      temp.next = b;
+      b = b.next;
+    }
+    temp = temp.next;
+  }
+  if (a !== null) temp.next = a;
+  if (b !== null) temp.next = b;
+
+  return dummy.next;
+};
