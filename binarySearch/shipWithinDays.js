@@ -45,3 +45,36 @@ Note:
   1. 1 <= D <= weights.length
   2. 1 <= weights[i] <= 500
 */
+
+const shipWithinDays = (weights, D) => {
+  let left = Math.max(...max); // n pieces
+  let right = weights.reduce((acc, weight) => acc + weight, 0) + 1; // 1 piece
+
+  while (left < right) {
+    const mid = Math.floor((left + right) / 2);
+
+    const days = getDays(weights, mid);
+
+    if (days > D) {
+      left = mid + 1; // move closer right
+    }
+    right = mid; // move closer left
+  }
+
+  return left;
+};
+
+const getDays = (weights, capacity) => {
+  let days = 1;
+  let sum = 0;
+
+  for (const weight of weights) {
+    if (sum + weight > capacity) {
+      days++;
+      sum = 0;
+    }
+    sum += weight;
+  }
+
+  return days;
+};
