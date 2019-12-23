@@ -14,6 +14,9 @@ Example:
 
 // Kadane's Algorithm
 
+// Time Complexity: O(cols^2 * rows)
+// Space Complexity: O(rows)
+
 const maxSumSubmatrix = (matrix, k) => {
   const rows = matrix.length,
     cols = matrix[0].length;
