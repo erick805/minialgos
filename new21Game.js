@@ -27,3 +27,34 @@ Note:
   1. 0 <= K <= N <= 10000
   2. 1 <= W <= 10000
 */
+
+// N = # of points or less, K = value to redraw, W = max value in card set
+
+// Dynamic Programming
+const new21Game = (N, K, W) => {
+  if (K === 0 || N >= K + W) return 1;
+
+  let sum = 1; // initiate sum as one - each card
+  let ans = 0;
+
+  const dp = [];
+  dp[0] = 1;
+
+  // loop for each value up until N
+  for (let i = 1; i <= N; i++) {
+    dp[i] = sum / W; // set each value probablity at index
+
+    // if value is less than K
+    if (i < K) {
+      sum = sum + dp[i]; // accumulate probability
+    } else {
+      ans = ans + dp[i];
+    }
+
+    if (i - W >= 0) {
+      sum = sum - dp[i - W]; // carry over
+    }
+  }
+
+  return ans;
+};
