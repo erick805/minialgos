@@ -12,6 +12,9 @@ Example 2:
   Explantion: Intervals [1,4] and [4,5] are considered overlapping.
 */
 
+// Time Complexity: O(nlogn)
+// Space Complexity: O(1) - not counting return arr
+
 const mergeIntervals = intervals => {
   if (!intervals.length) return intervals;
 
