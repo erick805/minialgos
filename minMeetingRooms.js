@@ -12,6 +12,9 @@ Example 2:
   Output: 1
 */
 
+// Time Complexity: O(nlogn)
+// Space Complexity: O(n)
+
 const minMeetingRooms = intervals => {
   if (!intervals) return 0;
 
