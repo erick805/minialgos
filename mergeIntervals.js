@@ -11,3 +11,23 @@ Example 2:
   Output: [[1,5]]
   Explantion: Intervals [1,4] and [4,5] are considered overlapping.
 */
+
+const mergeIntervals = intervals => {
+  if (!intervals.length) return intervals;
+
+  intervals.sort((a, b) => (a !== b ? a[0] - b[0] : a[1] - b[1])); // sort least to greatest
+
+  let prev = intervals[0];
+  const res = [prev];
+
+  for (const cur of intervals) {
+    if (cur[0] <= prev[1]) {
+      prev[1] = Math.max(cur[1], prev[1]);
+    } else {
+      res.push(cur);
+      prev = cur;
+    }
+  }
+
+  return res;
+};
