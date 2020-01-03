@@ -12,3 +12,10 @@ Input:
 
 Output: [15,16,18,10,11]
 '''
+
+
+class BinaryTree:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
