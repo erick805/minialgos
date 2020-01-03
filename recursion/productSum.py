@@ -9,6 +9,8 @@ For example, the product sum of [x,y] is x + y; the product sum of [x[y,z]] = x 
   Output: (5 + 2 + 2(7 -1) + 3 + 2(6 + 3(-13 + 8) + 4)) = 12
 '''
 
+# O(n) time | O(d) space d = depth
+
 
 def productSum(array, depth=1):
     sum = 0
