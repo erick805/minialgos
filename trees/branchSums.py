@@ -13,6 +13,8 @@ Input:
 Output: [15,16,18,10,11]
 '''
 
+# O(n) time | O(n) space
+
 
 class BinaryTree:
     def __init__(self, value):
