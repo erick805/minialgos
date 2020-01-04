@@ -30,3 +30,10 @@ Output (after removing 10):
 
 Output (searching for 15): True
 '''
+
+
+class BST:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
