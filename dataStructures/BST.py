@@ -108,3 +108,9 @@ class BST:
                     parent.right = current.left if current.left is not None else current.right
                 break
         return self
+
+    def getMinValue(self):
+        current = self
+        while current .left is not None:
+            current = current.left
+        return current.value
