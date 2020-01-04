@@ -57,3 +57,17 @@ class BST:
                 else:
                     current = current.right
         return self
+
+    # average: O(log(n)) time | O(1) space
+    # worst: O(n) time | O(1) space
+
+    def contains(self, value):
+        current = self
+        while current is not None:
+            if value < current.value:
+                current = current.left
+            elif value > current.value:
+                current = current.right
+            else:
+                return True
+        return False
