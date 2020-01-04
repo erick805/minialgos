@@ -5,6 +5,8 @@ Input: [75,105,120,75,90,135]
 Output: 330 (75 + 120 + 135)
 '''
 
+# O(n) time | O(1) space
+
 
 def maxSubsetSumNoAdjacent(array):
     if not len(array):
