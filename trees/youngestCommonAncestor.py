@@ -15,6 +15,8 @@ Input: Node A, Node E, Node I
 Output: Node B
 '''
 
+# O(d) time d = depth of tree, O(1) space
+
 
 class AncestralTree:
     def __init__(self, name):
