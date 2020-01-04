@@ -71,3 +71,40 @@ class BST:
             else:
                 return True
         return False
+
+    # average: O(log(n)) time | O(1) space
+    # worst: O(n) time | O(1) space
+
+    def remove(self, value, parent=None):
+        current = self
+        while current is not None:
+            if value < current.value:
+                parent = current
+                current = current.left
+            elif value > current.value:
+                parent = current
+                current = current.right
+            else:
+                if current.left is not None and current.right is not None:
+                    current.value = current.right.getMinValue()
+                    # current.value = smallest value of right subtree
+                    current.right.remove(current.value, current)
+                elif parent is None:  # if node to remove is root
+                    if current.left is not None:  # one left child
+                        current.value = current.left.value
+                        current.right = current.left.right
+                        current.left = current.left.left  # order of assignment matters
+
+                    elif current.right is not None:  # one right child
+                        current.value = current.right.value
+                        current.left = current.right.left
+                        current.right = current.right.right
+                    else:  # no child
+                        current.value = None
+
+                elif parent.left == current:
+                    parent.left = current.left if current.left is not None else current.right
+                elif parent.right == current:
+                    parent.right = current.left if current.left is not None else current.right
+                break
+        return self
