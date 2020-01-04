@@ -37,3 +37,23 @@ class BST:
         self.value = value
         self.left = None
         self.right = None
+
+    # average: O(log(n)) time | O(1) space
+    # worst: O(n) time | O(1) space
+
+    def insert(self, value):
+        current = self
+        while True:
+            if value < current.value:
+                if current.left is None:
+                    current.left = BST(value)
+                    break
+                else:
+                    current = current.left
+            else:
+                if current.right is None:
+                    current.right = BST(value)
+                    break
+                else:
+                    current = current.right
+        return self
