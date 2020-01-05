@@ -6,6 +6,8 @@ Input: [3,5,-9,1,3,-2,3,4,7,2,-9,6,3,1,-5,4]
 Output: 19 [1,3,-2,3,4,7,2,-9,6,3,1]
 '''
 
+# O(n) time | O(1) space
+
 
 def kadanesAlgorithm(array):
     maxEndingHere = array[0]
