@@ -8,6 +8,8 @@ Input: n = 7, denoms = [1,5,10]
 Output 3 (2*1 + 1*5)
 '''
 
+# O(nd) time | O(n) space
+
 
 def minNumberOfCoinsForChange(n, denoms):
     numOfCoins = [float("inf") for amount in range(n + 1)]
