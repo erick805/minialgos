@@ -8,6 +8,8 @@ Input: 6, [1,5]
 Output: 2 (1*1 + 1*5 and 6*1)
 '''
 
+# O(nd) time | O(n) space
+
 
 def numberOfWaysToMakeChange(n, denoms):
     ways = [0 for amount in range(n + 1)]
