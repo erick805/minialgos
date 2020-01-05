@@ -7,6 +7,8 @@ Input: str1 = "abc", str2 = "yabd"
 Output: 2 (insert "y", substitute "c" for "d")
 '''
 
+# O(n * m) time | O(n * m) space
+
 
 def levenshteinDistance(str1, str2):
     # build matrix
