@@ -9,3 +9,23 @@ following the jumps, every element is visited exactly once before landing back o
 Input: [2,3,1,-4,-4,2]
 Output: True
 '''
+
+
+def hasSingleCycle(array):
+    elemsVisited = 0
+    currentIdx = 0
+
+    while elemsVisited < len(array):
+        if elemsVisited > 0 and currentIdx == 0:
+            return False
+        elemsVisited += 1
+        currentIdx = nextIdx(currentIdx, array)
+
+    return currentIdx == 0
+
+
+def nextIdx(currentIdx, array):
+    jump = array[currentIdx]
+    nextIdx = (currentIdx + jump) % len(array)
+
+    return nextIdx if nextIdx >= 0 else nextIdx + len(array)
