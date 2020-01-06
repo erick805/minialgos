@@ -10,6 +10,8 @@ Input: [2,3,1,-4,-4,2]
 Output: True
 '''
 
+# O(n) time | O(1) space
+
 
 def hasSingleCycle(array):
     elemsVisited = 0
