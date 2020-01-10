@@ -14,3 +14,13 @@ Input:   A
 
 Output: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
 '''
+
+
+class Node:
+    def __init__(self, name):
+        self.name = name
+        self.children = []
+
+    def addChild(self, name):
+        self.children.append(Node(name))
+        return self
