@@ -27,3 +27,24 @@ def riverSizes(matrix):
                 continue
             traverseNode(i, j, matrix, visited, sizes)
     return sizes
+
+
+def traverseNode(i, j, matrix, visited, sizes):
+    currentRiverSize = 0
+    nodesToExplore = [[i, j]]
+    while len(nodesToExplore):
+        currentNode = nodesToExplore.pop()
+        i = currentNode[0]
+        j = currentNode[1]
+
+        if visited[i][j]:
+            continue
+        visited[i][j] = True
+        if matrix[i][j] == 0:
+            continue
+        currentRiverSize += 1
+        unvisitedNeighbors = getUnvisitedNeighbors(i, j, matrix, visited)
+        for neighbor in unvisitedNeighbors:
+            nodesToExplore.append(neighbor)
+    if currentRiverSize > 0:
+        sizes.append(currentRiverSize)
