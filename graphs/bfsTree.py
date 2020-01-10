@@ -25,7 +25,7 @@ class Node:
         self.children.append(Node(name))
         return self
 
-    # O(v + e) time | O(v) space
+    # O(v + e) time v = vertices or number of nodes e = edges/connections | O(v) space
     def breadthFirstSearch(self, array):
         queue = [self]
         while len(queue) > 0:
