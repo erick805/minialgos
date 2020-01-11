@@ -15,6 +15,7 @@ class LinkedList:
         self.next = None
 
 
+# O(n) time | O(1) space
 def removeNthFromEnd(head, n):
     first = head
     second = head
