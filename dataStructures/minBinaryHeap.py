@@ -46,3 +46,6 @@ class MinHeap:
                 childOneIdx = currentIdx * 2 + 1
             else:
                 return
+
+    def swap(self, i, j, heap):
+        heap[i], heap[j] = heap[j], heap[i]
