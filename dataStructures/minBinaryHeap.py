@@ -24,3 +24,10 @@ Output:
 class MinHeap:
     def __init__(self, array):
         self.heap = self.buildHeap(array)
+
+    def buildHeap(self, array):
+        firstParentIdx = (len(array) - 2) // 2
+        for currentIdx in reversed(range(firstParentIdx + 1)):
+            self.siftDown(currentIdx, len(array) - 1, array)
+
+        return array
