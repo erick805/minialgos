@@ -23,3 +23,9 @@ def permutationsHelper(arr, currentPermutation, permutations):
             newArr = arr[:i] + arr[i + 1:]  # copy other letters
             newPerm = currentPermutation + [arr[i]]
             permutationsHelper(newArr, newPerm, permutations)
+
+
+def permutationsOptimized(array):
+    permutations = []
+    permutationsHelperOptimized(0, array, permutations)
+    return permutations
