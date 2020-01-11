@@ -57,6 +57,10 @@ class MinHeap:
     def peek(self):
         return self.heap[0]
 
+    def insert(self, value):
+        self.heap.append(value)
+        self.siftUp(len(self.heap) - 1, self.heap)
+
     def remove(self):
         self.swap(0, len(self.heap) - 1, self.heap)
         valueToRemove = self.heap.pop()
