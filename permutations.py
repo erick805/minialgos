@@ -11,3 +11,13 @@ def permutations(array):
     permutations = []
     permutationsHelper(array, [], permutations)
     return permutations
+
+
+def permutationsHelper(arr, currentPermutation, permutations):
+    if not len(arr) and len(currentPermutation):
+        permutations.append(currentPermutation)
+    else:
+        for i in range(len(arr)):
+            newArr = arr[:i] + arr[i + 1:]  # copy other letters
+            newPerm = currentPermutation + [arr[i]]
+            permutationsHelper(newArr, newPerm, permutations)
