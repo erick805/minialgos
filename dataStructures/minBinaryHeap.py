@@ -31,3 +31,18 @@ class MinHeap:
             self.siftDown(currentIdx, len(array) - 1, array)
 
         return array
+
+    def siftDown(self, currentIdx, endIdx, heap):
+        childOneIdx = currentIdx * 2 + 1
+        while childOneIdx <= endIdx:
+            childTwoIdx = currentIdx * 2 + 2 if currentIdx * 2 + 2 <= endIdx else -1
+            if childTwoIdx != -1 and heap[childTwoIdx] < heap[childOneIdx]:
+                idxToSwap = childTwoIdx
+            else:
+                idxToSwap = childOneIdx
+            if heap[idxToSwap] < heap[currentIdx]:
+                self.swap(currentIdx, idxToSwap, heap)
+                currentIdx = idxToSwap
+                childOneIdx = currentIdx * 2 + 1
+            else:
+                return
