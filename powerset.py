@@ -8,6 +8,7 @@ Output: [[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]]
 '''
 
 
+# O(n*2^n) time | O(n*2^n) space
 def powerset(array, idx=None):
     if idx is None:
         idx = len(array) - 1
