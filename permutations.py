@@ -25,6 +25,7 @@ def permutationsHelper(arr, currentPermutation, permutations):
             permutationsHelper(newArr, newPerm, permutations)
 
 
+# O(n*n!) time | O(n*n!) space
 def permutationsOptimized(array):
     permutations = []
     permutationsHelperOptimized(0, array, permutations)
