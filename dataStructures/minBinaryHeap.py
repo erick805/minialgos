@@ -54,5 +54,8 @@ class MinHeap:
             currentIdx = parentIdx
             parentIdx = (currentIdx - 1) // 2
 
+    def peek(self):
+        return self.heap[0]
+
     def swap(self, i, j, heap):
         heap[i], heap[j] = heap[j], heap[i]
