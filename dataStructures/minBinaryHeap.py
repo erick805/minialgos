@@ -19,3 +19,8 @@ Output:
 [6,7,8,24,8,24,24,391,76,56,12,41,48]
 [6,7,8,24,8,24,24,391,76,56,12,41,48,87]
 '''
+
+
+class MinHeap:
+    def __init__(self, array):
+        self.heap = self.buildHeap(array)
