@@ -6,3 +6,18 @@ powerset do not need to be in any particular order.
 Input: [1,2,3]
 Output: [[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]]
 '''
+
+
+def powerset(array, idx=None):
+    if idx is None:
+        idx = len(array) - 1
+    if idx < 0:
+        return [[]]
+
+    ele = array[idx]
+    subsets = powerset(array, idx - 1)
+
+    for i in range(len(subsets)):
+        currentSubset = subsets[i]
+        subsets.append(currentSubset + [ele])
+    return subsets
