@@ -47,5 +47,12 @@ class MinHeap:
             else:
                 return
 
+    def siftUp(self, currentIdx, heap):
+        parentIdx = (currentIdx - 1) // 2
+        while currentIdx > 0 and heap[currentIdx] < heap[parentIdx]:
+            self.swap(currentIdx, parentIdx, heap)
+            currentIdx = parentIdx
+            parentIdx = (currentIdx - 1) // 2
+
     def swap(self, i, j, heap):
         heap[i], heap[j] = heap[j], heap[i]
