@@ -10,6 +10,7 @@ Output: True
 '''
 
 
+# O(n) time | O(n) space
 def balancedBrackets(string):
     openingBrackets = "([{"
     closingBrackets = ")]}"
@@ -19,7 +20,7 @@ def balancedBrackets(string):
     for char in string:
         if char in openingBrackets:
             stack.append(char)
-        if char in closingBrackets:
+        elif char in closingBrackets:
             if len(stack) == 0:
                 return False
 
