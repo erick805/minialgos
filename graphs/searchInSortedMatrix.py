@@ -17,6 +17,7 @@ Output: [3,3]
 '''
 
 
+# O(n + m) time | O(1) space
 def searchInSortedMatrix(matrix, target):
     row = 0
     col = len(matrix[0]) - 1
