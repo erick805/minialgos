@@ -40,7 +40,7 @@ class SuffixTrie:
             node = node[letter]
         node[self.endSymbol] = True
 
-    # O(m) time, m = substring| O(1) space
+    # O(m) time, m = substring | O(1) space
     def contains(self, string):
         node = self.root
         for letter in string:
