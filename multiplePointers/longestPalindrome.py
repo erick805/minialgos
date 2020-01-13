@@ -22,3 +22,13 @@ def longestPalindrome(string):
                              key=lambda x: x[1] - x[0])
 
     return string[currentLongest[0]: currentLongest[1]]
+
+
+def getLongestPalindrome(string, leftIdx, rightIdx):
+    while leftIdx >= 0 and rightIdx < len(string):
+        if string[leftIdx] != string[rightIdx]:
+            break
+        leftIdx -= 1
+        rightIdx += 1
+
+    return [leftIdx + 1, rightIdx]
