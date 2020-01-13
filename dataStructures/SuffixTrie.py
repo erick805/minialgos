@@ -29,3 +29,12 @@ class SuffixTrie:
     def populateSuffixTrieFrom(self, string):
         for i in range(string):
             self.insertSubstringStartingAt(i, string)
+
+    def insertSubstringStartingAt(self, i, string):
+        node = self.root
+        for j in range(i, len(string)):
+            letter = string[j]
+            if letter not in node:
+                node[letter] = {}
+            node = node[letter]
+        node[self.endSymbol] = True
