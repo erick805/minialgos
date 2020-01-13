@@ -26,6 +26,7 @@ class SuffixTrie:
         self.endSymbol = "*"
         self.populateSuffixTrieFrom(string)
 
+    # O(n^2) time | O(n^2) space
     def populateSuffixTrieFrom(self, string):
         for i in range(len(string)):
             self.insertSubstringStartingAt(i, string)
@@ -39,6 +40,7 @@ class SuffixTrie:
             node = node[letter]
         node[self.endSymbol] = True
 
+    # O(m) time, m = substring| O(1) space
     def contains(self, string):
         node = self.root
         for letter in string:
