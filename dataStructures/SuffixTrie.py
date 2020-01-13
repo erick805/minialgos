@@ -18,3 +18,14 @@ Output (for creation):
 Input (for searching the suffix trie above): "abc"
 Output: True
 '''
+
+
+class SuffixTrie:
+    def __init__(self, string):
+        self.root = {}
+        self.endSymbol = "*"
+        self.populateSuffixTrieFrom(string)
+
+    def populateSuffixTrieFrom(self, string):
+        for i in range(string):
+            self.insertSubstringStartingAt(i, string)
