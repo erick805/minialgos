@@ -27,7 +27,7 @@ class SuffixTrie:
         self.populateSuffixTrieFrom(string)
 
     def populateSuffixTrieFrom(self, string):
-        for i in range(string):
+        for i in range(len(string)):
             self.insertSubstringStartingAt(i, string)
 
     def insertSubstringStartingAt(self, i, string):
@@ -38,3 +38,12 @@ class SuffixTrie:
                 node[letter] = {}
             node = node[letter]
         node[self.endSymbol] = True
+
+    def contains(self, string):
+        node = self.root
+        for letter in string:
+            if letter not in node:
+                return False
+            node = node[letter]
+
+        return self.endSymbol in node
