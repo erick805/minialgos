@@ -8,6 +8,7 @@ Output: [["yo", "oy"], ["act", "tac", "cat"], ["flop", "olfp"]]
 '''
 
 
+# O(w * n * log(n)) time | O(wn) space, w = # of words, n = length of each word
 def groupAnagrams(words):
     anagrams = {}
 
