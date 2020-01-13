@@ -7,6 +7,7 @@ Output: "xyzzyx"
 '''
 
 
+# O(n^2) time | O(1) space
 def longestPalindrome(string):
     currentLongest = [0, 1]
 
