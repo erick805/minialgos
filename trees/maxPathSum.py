@@ -15,6 +15,7 @@ Output: 18
 '''
 
 
+# O(n) time | O(log(n)) space average, O(n) worst case
 def maxPathSum(tree):
     _, maxSum = findMaxSum(tree)
 
