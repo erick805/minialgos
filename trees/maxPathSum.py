@@ -13,3 +13,26 @@ Input:  1
 
 Output: 18
 '''
+
+
+def maxPathSum(tree):
+    _, maxSum = findMaxSum(tree)
+
+    return maxSum
+
+
+def findMaxSum(tree):
+    if tree is None:
+        return (0, 0)
+
+    LSB, LRS = findMaxSum(tree.left)
+    RSB, RRS = findMaxSum(tree.right)
+
+    maxChildSumAsBranch = max(LSB, RSB)
+
+    value = tree.value
+    maxSumAsBranch = max(maxChildSumAsBranch + value, value)
+    maxSumAsRootNode = max(LSB + value + RSB, maxSumAsBranch)
+    maxPathSum = max(LRS, RRS, maxSumAsRootNode)
+
+    return (maxSumAsBranch, maxPathSum)
