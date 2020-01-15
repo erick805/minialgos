@@ -9,6 +9,8 @@ Output: [[7,6,4,-1],[7,6,1,2]]
 '''
 
 
+# average: O(n^2) time | O(n^2) space
+# worst case: O(n^3) time | O(n^2) space
 def fourNumberSum(array, targetSum):
     allPairSums = {}
     quadruplets = []
