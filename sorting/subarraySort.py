@@ -8,6 +8,7 @@ Output: [3,9]
 '''
 
 
+# O(n) time | O(1) space
 def subarraySort(array):
     minimumUnsorted = float("inf")
     maximumUnsorted = float("-inf")
