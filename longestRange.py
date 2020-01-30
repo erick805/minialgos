@@ -12,3 +12,36 @@ Assume there will only be one longest range.
 Input: [1,11,3,0,15,5,2,4,10,7,12,6]
 Output: [0,7]
 '''
+
+
+def longestRange(array):
+    largestRange = []
+    longestLen = 0
+    visited = {}
+
+    for num in array:
+        visited[num] = False
+
+    for num in array:
+        if visited[num]:
+            continue
+        visited[num] = True
+        currentLen = 1
+        left = num - 1
+        right = num + 1
+
+        while left in visited:
+            currentLen += 1
+            visited[left] = True
+            left -= 1
+
+        while right in visited:
+            currentLen += 1
+            visited[right] = True
+            right += 1
+
+        if currentLen > longestLen:
+            longestLen = currentLen
+            largestRange = [left + 1, right - 1]
+
+    return largestRange
