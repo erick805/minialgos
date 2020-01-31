@@ -18,6 +18,7 @@ Output: 25 ([4,3,2,1,2,3,4,5,1])
 '''
 
 
+# O(n) time | O(n) space
 def minStickers(goals):
     stickers = [1 for sticker in goals]
 
