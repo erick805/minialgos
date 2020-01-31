@@ -16,3 +16,17 @@ give out to all the students, while satisfying the three rules.
 Input: [8,4,2,1,3,6,7,9,5]
 Output: 25 ([4,3,2,1,2,3,4,5,1])
 '''
+
+
+def minStickers(goals):
+    stickers = [1 for sticker in goals]
+
+    for i in range(1, len(goals)):
+        if goals[i] > goals[i - 1]:
+            stickers[i] = stickers[i - 1] + 1
+
+    for i in reversed((range(len(goals) - 1))):
+        if goals[i] > goals[i + 1]:
+            stickers[i] = max(stickers[i], stickers[i + 1] + 1)
+
+    return sum(stickers)
