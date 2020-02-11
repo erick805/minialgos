@@ -14,3 +14,40 @@ Input: matrix =
 
 Output: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 '''
+
+
+def zigZagTraverse(matrix):
+    result = []
+    width = len(matrix[0]) - 1
+    height = len(matrix) - 1
+    row, col = 0, 0
+    traverseDown = True
+
+    while not isOutOfBounds(row, col, width, height):
+        result.append(matrix[row][col])
+        if traverseDown:
+            if col == 0 or row == height:
+                traverseDown = False
+                if row == height:
+                    col += 1
+                else:
+                    row += 1
+            else:
+                row += 1
+                col -= 1
+        else:
+            if row == 0 or col == width:
+                traverseDown = True
+                if col == width:
+                    row += 1
+                else:
+                    col += 1
+            else:
+                row -= 1
+                col += 1
+
+    return result
+
+
+def isOutOfBounds(row, col, width, height):
+    return row < 0 or row > height or col < 0 or col > width
