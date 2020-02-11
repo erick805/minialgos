@@ -10,6 +10,7 @@ Output: [130, [10,50,70]]
 '''
 
 
+# O(n^2) time | O (n) space
 def maxSumIncSubSequence(array):
     sequences = [None for num in array]
     sums = array[:]
