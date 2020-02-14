@@ -10,6 +10,7 @@ Output: ["A", "B", "C", "D"]
 '''
 
 
+# O(n * m) time | O(n * m) space
 def longestCommonSubSequence(str1, str2):
     lcs = [[[None, 0, None, None]
             for x in range(len(str1) + 1)] for y in range(len(str2) + 1)]
