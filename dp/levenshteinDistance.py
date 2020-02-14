@@ -7,9 +7,8 @@ Input: str1 = "abc", str2 = "yabd"
 Output: 2 (insert "y", substitute "c" for "d")
 '''
 
+
 # O(n * m) time | O(n * m) space
-
-
 def levenshteinDistance(str1, str2):
     # build matrix
     edits = [[x for x in range(len(str1) + 1)] for y in range(len(str2) + 1)]
@@ -28,9 +27,8 @@ def levenshteinDistance(str1, str2):
 
     return edits[-1][-1]  # return last value in matrix
 
+
 # O(n * m) time | O(min(n, m)) space
-
-
 def levenshteinDistanceOptimized(str1, str2):
     small = str1 if len(str1) < len(str2) else str2
     big = str1 if len(str1) >= len(str2) else str2

@@ -47,7 +47,7 @@ Note:
 */
 
 const shipWithinDays = (weights, D) => {
-  let left = Math.max(...max); // n pieces
+  let left = Math.max(...weights); // n pieces
   let right = weights.reduce((acc, weight) => acc + weight, 0) + 1; // 1 piece
 
   while (left < right) {

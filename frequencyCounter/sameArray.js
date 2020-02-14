@@ -54,9 +54,6 @@ const sameArray = (arrOne, arrTwo) => {
 // TIME COMPLEXITY
 // O(n) - time complexity
 
-// SPACE COMPLEXITY
-// O(1) - space complexity
-
 // ORDER DOES NOT MATTER
 
 const sameArray = (arrOne, arrTwo) => {
