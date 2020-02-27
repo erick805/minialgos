@@ -6,17 +6,17 @@
 // Deterministic (same input yields same output)
 
 // simple hash function (only works on strings!)
-function hash(key, arrayLen) {
+const hash = (key, arrayLen) => {
   let total = 0;
-  let WEIRD_PRIME = 31;
+  const WEIRD_PRIME = 31;
 
   for (let i = 0; i < Math.min(key.length, 100); i++) {
-    let char = key[i];
-    let value = char.charCodeAt(0) - 96;
+    const char = key[i];
+    const value = char.charCodeAt(0) - 96;
     total = (total * WEIRD_PRIME + value) % arrayLen;
   }
   return total;
-}
+};
 
 // Dealing with Collisions
 
@@ -40,31 +40,34 @@ class HashTable {
 
   _hash(key) {
     let total = 0;
-    let WEIRD_PRIME = 31;
+    const WEIRD_PRIME = 31;
 
     for (let i = 0; i < Math.min(key.length, 100); i++) {
-      let char = key[i];
-      let value = char.charCodeAt(0) - 96;
+      const char = key[i];
+      const value = char.charCodeAt(0) - 96;
       total = (total * WEIRD_PRIME + value) % this.keyMap.length;
     }
+
     return total;
   }
 
   set(key, val) {
-    let index = this._hash(key);
+    const idx = this._hash(key);
 
-    if (!this.keyMap[index]) {
-      this.keyMap[index] = [];
+    if (!this.keyMap[idx]) {
+      this.keyMap[idx] = [];
     }
-    this.keyMap[index].push([key, val]);
+
+    this.keyMap[idx].push([key, val]);
   }
 
   get(key) {
-    let index = this._hash(key);
-    if (this.keyMap[index]) {
-      for (let i = 0; i < this.keyMap[index].length; i++) {
-        if (this.keyMap[index][i][0] === key) {
-          return this.keyMap[index][i][1];
+    const idx = this._hash(key);
+
+    if (this.keyMap[idx]) {
+      for (let i = 0; i < this.keyMap[idx].length; i++) {
+        if (this.keyMap[idx][i][0] === key) {
+          return this.keyMap[idx][i][1];
         }
       }
     }
@@ -72,11 +75,11 @@ class HashTable {
   }
 
   keys() {
-    let keys = [];
+    const keys = [];
     for (let i = 0; i < this.keyMap.length; i++) {
       if (this.keyMap[i]) {
         for (let j = 0; j < this.keyMap[i].length; j++) {
-          if (!keys.includes([this.keyMap[i][j][0]])) {
+          if (!keys.includes(this.keyMap[i][j][0])) {
             keys.push(this.keyMap[i][j][0]);
           }
         }
@@ -86,11 +89,11 @@ class HashTable {
   }
 
   values() {
-    let values = [];
+    const values = [];
     for (let i = 0; i < this.keyMap.length; i++) {
       if (this.keyMap[i]) {
         for (let j = 0; j < this.keyMap[i].length; j++) {
-          if (!values.includes([this.keyMap[i][j][1]])) {
+          if (!values.includes(this.keyMap[i][j][1])) {
             values.push(this.keyMap[i][j][1]);
           }
         }
