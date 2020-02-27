@@ -57,10 +57,10 @@ const shipWithinDays = (weights, D) => {
 
     if (days > D) {
       left = mid + 1; // move closer right
+    } else {
+      right = mid; // move closer left
     }
-    right = mid; // move closer left
   }
-
   return left;
 };
 
