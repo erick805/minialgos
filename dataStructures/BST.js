@@ -16,13 +16,14 @@ class BST {
   }
 
   insert(val) {
-    let node = new Node(val);
+    const node = new Node(val);
     if (!this.root) {
       this.root = node;
       return this;
     }
     let current = this.root;
-    while (true) {
+
+    while (current) {
       if (val < current.val) {
         if (current.left === null) {
           current.left = node;
@@ -43,6 +44,7 @@ class BST {
     if (!this.root) return false;
     let current = this.root;
     let found = false;
+
     while (current && !found) {
       if (val < current.val) {
         current = current.left;
@@ -56,60 +58,55 @@ class BST {
   }
 
   bfs() {
-    let visited = [];
-    let queue = [this.root];
+    const visited = [];
+    const queue = [this.root];
 
     while (queue.length) {
-      let dequedNode = queue.shift();
-      visited.push(dequedNode.val);
-      if (dequedNode.left) queue.push(dequedNode.left);
-
-      if (dequedNode.right) queue.push(dequedNode.right);
+      const dequed = queue.shift();
+      visited.push(dequed);
+      if (dequed.left) queue.push(dequed.left);
+      if (dequed.right) queue.push(dequed.right);
     }
 
     return visited;
   }
 
-  // DFS - PreOrder
   dfsPre() {
-    let visited = [];
-    let current = this.root;
+    const visited = [];
+    const current = this.root;
 
-    function traverse(node) {
-      visited.push(node.val);
-      if (node.left) traverse(node.left);
-      if (node.right) traverse(node.right);
-    }
-    traverse(current);
-
+    const dfs = node => {
+      visited.push(node);
+      if (node.left) dfs(node.left);
+      if (node.right) dfs(node.right);
+    };
+    dfs(current);
     return visited;
   }
 
   dfsPost() {
-    let visited = [];
-    let current = this.root;
+    const visited = [];
+    const current = this.root;
 
-    function traverse(node) {
-      if (node.left) traverse(node.left);
-      if (node.right) traverse(node.right);
-      visited.push(node.val);
-    }
-    traverse(current);
-
+    const dfs = node => {
+      if (node.left) dfs(node.left);
+      if (node.right) dfs(node.right);
+      visited.push(node);
+    };
+    dfs(current);
     return visited;
   }
 
   dfsInOrder() {
-    let visited = [];
-    let current = this.root;
+    const visited = [];
+    const current = this.root;
 
-    function traverse(node) {
-      node.left && traverse(node.left);
-      visited.push(node.val);
-      node.right && traverse(node.right);
-    }
-    traverse(current);
-
+    const dfs = node => {
+      if (node.left) dfs(node.left);
+      visited.push(node);
+      if (node.right) dfs(node.right);
+    };
+    dfs(current);
     return visited;
   }
 }
@@ -118,14 +115,13 @@ class BST {
 // O(n)
 // Space Complexity
 // O(d) - d is depth of tree
-// **doesn't work on this BST class**
-function validateBst(tree) {
-  return validateBstHelper(tree, -Infinity, Infinity);
-}
+const validateBST = tree => {
+  return validateBSTHelper(tree, -Infinity, Infinity);
+};
 
-function validateBstHelper(tree, min, max) {
+const validateBSTHelper = (tree, min, max) => {
   if (tree === null) return true;
-  if (tree.value < min || tree.value >= max) return false;
-  let leftisValid = validateBstHelper(tree.left, min, tree.value);
-  return leftisValid && validateBstHelper(tree.right, tree.value, max);
-}
+  if (tree.val < min || tree.val >= max) return false;
+  const leftIsValid = validateBSTHelper(tree.left, min, tree.val);
+  return leftIsValid && validateBSTHelper(tree.right, tree.left, max);
+};
