@@ -11,33 +11,20 @@
 
 // SPACE COMPLEXITY
 // O(n) space
+const charCount = str => {
+  const count = {};
 
-function charCount(str) {
-  let count = {};
-  // for (let i = 0; i < str.length; i++) {
-
-  // 1) refactored to for of loop
   for (let char of str) {
-    // char = char.toLowerCase();
-    // if (!"abcdefghijklmnopqrstuvwxyz0123456789".includes(char)) {
-    //   continue;
-    // }
-    // 2) refactored to functional and compare with char codes
-    if (isAlphaNemuric(char)) {
+    if (isAlphaNumeric(char)) {
       char = char.toLowerCase();
       count[char] = ++count[char] || 1;
     }
-    // if (!count[char]) {
-    //   count[char] = 1;
-    // } else {
-    //   count[char]++;
-    // }
   }
   return count;
-}
+};
 
-function isAlphaNemuric(char) {
-  let code = char.charCodeAt(0);
+const isAlphaNumeric = char => {
+  const code = char.charCodeAt(0);
 
   if (
     // numeric (0 - 9)
@@ -46,8 +33,7 @@ function isAlphaNemuric(char) {
     !(code > 64 && code < 91) &&
     // lower alpha (a - z)
     !(code > 96 && code < 123)
-  ) {
+  )
     return false;
-  }
   return true;
-}
+};
