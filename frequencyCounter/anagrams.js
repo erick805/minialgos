@@ -10,28 +10,24 @@
 // O(1) space complexity
 
 const anagram = (str1, str2) => {
-  if (str1.length !== str2.length) {
-    return false;
-  }
+  if (str1.length !== str2.length) return false;
 
-  let countOne = {};
-  let countTwo = {};
+  const countOne = {};
+  const countTwo = {};
 
-  for (let val of str1) {
+  for (const val of str1) {
     if (!countOne[val]) countOne[val] = 1;
     else countOne[val]++;
   }
 
-  for (let val of str2) {
+  for (const val of str2) {
     if (!countTwo[val]) countTwo[val] = 1;
     else countTwo[val]++;
   }
 
-  for (let key in countOne) {
-    if (!(key in countTwo)) return false;
-    if (countTwo[key] !== countOne[key]) {
-      return false;
-    }
+  for (const key in countOne) {
+    if (!countTwo[key]) return false;
+    if (countTwo[key] !== countOne[key]) return false;
   }
 
   return true;
@@ -40,21 +36,18 @@ const anagram = (str1, str2) => {
 // more optimized O(n) time approach
 
 const anagram = (str1, str2) => {
-  if (str1.length !== str2.length) {
-    return false;
-  }
+  if (str1.length !== str2.length) return false;
 
-  let count = {};
+  const count = {};
 
-  for (let val of str1) {
+  for (const val of str1) {
     if (!count[val]) count[val] = 1;
     else count[val]++;
   }
 
-  for (let val of str2) {
+  for (const val of str2) {
     if (!count[val]) return false;
-    else count[val] -= 1;
+    else count[val]--;
   }
-
   return true;
 };
