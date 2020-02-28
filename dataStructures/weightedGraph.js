@@ -2,6 +2,7 @@ class PriorityQueue {
   constructor() {
     this.values = [];
   }
+
   enqueue(val, priority) {
     this.values.push({ val, priority });
     this.sort();
@@ -25,14 +26,16 @@ class WeightedGraph {
     this.adjacencyList[vertex1].push({ node: vertex2, weight });
     this.adjacencyList[vertex2].push({ node: vertex1, weight });
   }
+
   Dijkstra(start, finish) {
     const nodes = new PriorityQueue();
     const distances = {};
     const previous = {};
-    let path = []; //to return at end
+    const path = [];
     let smallest;
-    //build up initial state
-    for (let vertex in this.adjacencyList) {
+
+    // build up initial state
+    for (const vertex in this.adjacencyList) {
       if (vertex === start) {
         distances[vertex] = 0;
         nodes.enqueue(vertex, 0);
@@ -42,12 +45,13 @@ class WeightedGraph {
       }
       previous[vertex] = null;
     }
+
     // as long as there is something to visit
     while (nodes.values.length) {
       smallest = nodes.dequeue().val;
       if (smallest === finish) {
-        //WE ARE DONE
-        //BUILD UP PATH TO RETURN AT END
+        // we are done
+        // build path to return
         while (previous[smallest]) {
           path.push(smallest);
           smallest = previous[smallest];
@@ -55,18 +59,18 @@ class WeightedGraph {
         break;
       }
       if (smallest || distances[smallest] !== Infinity) {
-        for (let neighbor in this.adjacencyList[smallest]) {
-          //find neighboring node
-          let nextNode = this.adjacencyList[smallest][neighbor];
-          //calculate new distance to neighboring node
-          let candidate = distances[smallest] + nextNode.weight;
-          let nextNeighbor = nextNode.node;
+        for (const neighbor in this.adjacencyList[smallest]) {
+          // find neighboring node
+          const nextNode = this.adjacencyList[smallest][neighbor];
+          // calculate new distance to neighboring node
+          const candidate = distances[smallest] + nextNode.weight;
+          const nextNeighbor = nextNode.node;
           if (candidate < distances[nextNeighbor]) {
-            //updating new smallest distance to neighbor
+            // updating new smallest distance to neighbor
             distances[nextNeighbor] = candidate;
-            //updating previous - How we got to neighbor
+            // updating previous - how we got to neighbor
             previous[nextNeighbor] = smallest;
-            //enqueue in priority queue with new priority
+            // enqueue in priority queue with new priority
             nodes.enqueue(nextNeighbor, candidate);
           }
         }
@@ -76,7 +80,7 @@ class WeightedGraph {
   }
 }
 
-var graph = new WeightedGraph();
+const graph = new WeightedGraph();
 graph.addVertex("A");
 graph.addVertex("B");
 graph.addVertex("C");
@@ -93,6 +97,4 @@ graph.addEdge("D", "E", 3);
 graph.addEdge("D", "F", 1);
 graph.addEdge("E", "F", 1);
 
-graph.Dijkstra("A", "E");
-
-// ["A", "C", "D", "F", "E"]
+graph.Dijkstra("A", "E"); // ["A", "C", "D", "F", "E"]
