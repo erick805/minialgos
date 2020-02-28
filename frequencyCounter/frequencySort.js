@@ -46,10 +46,10 @@ const frequencySort = str => {
 
   const letterFreq = {};
 
-  for (let letter of str) {
-    if (!letterFreq[letter]) letterFreq[letter] = 1;
-    else letterFreq[letter]++;
+  for (const letter of str) {
+    letterFreq[letter] = ++letterFreq[letter] || 1;
   }
+
   let result = "";
   Object.keys(letterFreq)
     .sort((a, b) => letterFreq[b] - letterFreq[a])
