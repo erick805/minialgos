@@ -20,20 +20,20 @@ Space Complexity: O(1)
 
 const wordCountEngine = document => {
   document = document.toLowerCase();
-  const alphabet = "abcdefghijklmnopqrstuvwxyz ";
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
   let newAlpha = "";
+
   for (let i = 0; i < document.length; i++) {
-    if (alphabet.includes(document[i])) {
+    if (alphabet.includes(document[i]) || document[i] === " ") {
       newAlpha += document[i];
     }
   }
-  const wordFreq = {};
 
+  const wordFreq = {};
   newAlpha = newAlpha.split(" ");
 
-  for (let word of newAlpha) {
-    if (!wordFreq[word]) wordFreq[word] = 1;
-    else wordFreq[word]++;
+  for (const word of newAlpha) {
+    wordFreq[word] = ++wordFreq[word] || 1;
   }
 
   return Object.entries(wordFreq).sort((a, b) => b[1] - a[1]);
