@@ -11,7 +11,7 @@
 // SPACE COMPLEXITY
 // O(n) space
 
-function sameFrequency(num1, num2) {
+const sameFrequency = (num1, num2) => {
   num1 = num1.toString();
   num2 = num2.toString();
 
@@ -20,18 +20,14 @@ function sameFrequency(num1, num2) {
   const count = {};
 
   for (const val of num1) {
-    if (!(val in count)) {
-      count[val] = 1;
-    } else {
-      count[val]++;
-    }
+    count[val] = count[val]++ || 1;
   }
 
   for (let i = 0; i < num2.length; i++) {
-    let num = num2[i];
-    if (!(num in count)) return false;
+    const num = num2[i];
+    if (!count[num]) return false;
     else count[num]--;
   }
 
   return true;
-}
+};
