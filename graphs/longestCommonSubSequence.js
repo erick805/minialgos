@@ -9,6 +9,7 @@ Input: str1 = "AMBHCD", str2 = "ABYCMMD"
 Output: ["A", "B", "C", "D"]
 */
 
+// O(n * m) time | O(n * m) space
 const longestCommonSubSequence = (str1, str2) => {
   const lcs = [];
   for (let i = 0; i < str2.length + 1; i++) {
