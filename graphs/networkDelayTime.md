@@ -29,7 +29,6 @@ const networkDelayTime = (times, N, K) => {
   const visitedList = [];
 
   const graph = createGraph(N, times);
-  const unvisited = Object.values(graph);
 
   let minTime = 0;
 
