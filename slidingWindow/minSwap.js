@@ -22,7 +22,7 @@ Note:
 */
 
 // Time Complexity: O(n)
-// Space Complexity: O(n) or O(1)
+// Space Complexity: O(1)
 
 const minSwap = (A, B) => {
   const len = A.length;
