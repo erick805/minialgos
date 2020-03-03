@@ -38,7 +38,7 @@ function maxSubSum(arr, num) {
 // O(n logn) time
 
 // SPACE COMPLEXITY
-// O(log(n))
+// O(1) space
 
 function maxSubSum(arr, num) {
   if (num > arr.length) return null;
