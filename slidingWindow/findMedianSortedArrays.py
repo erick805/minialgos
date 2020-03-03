@@ -21,6 +21,7 @@ Example 2:
 '''
 
 
+# O(log(min(nums1.length, nums2.length))) time | O(1) space
 def findMedianSortedArrays(nums1, nums2):
     if len(nums1) > len(nums2):
         return findMedianSortedArrays(nums2, nums1)
