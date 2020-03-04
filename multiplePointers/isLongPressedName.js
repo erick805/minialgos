@@ -27,6 +27,7 @@ Output: true
 Explanation: It's not necessary to long press any character.
 */
 
+// O(name.length) time | O(1) space
 const isLongPressedName = (name, typed) => {
   let idx = 0;
   let typedIdx = 0;
