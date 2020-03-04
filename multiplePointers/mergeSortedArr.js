@@ -9,24 +9,23 @@
 // SPACE COMPLEXITY
 // O(n + m)
 
-function mergeSortedArr(arr1, arr2) {
+const mergeSortedArr = (arr1, arr2) => {
   if (!arr1.length) return arr2;
   if (!arr2.length) return arr1;
 
-  let left = 0;
-  let right = 0;
+  let pt1 = 0;
+  let pt2 = 0;
 
-  let mergedArr = [];
+  const mergedArr = [];
 
-  while (arr1[left] || arr2[right]) {
-    if (!arr2[right] || arr1[left] < arr2[right]) {
-      mergedArr.push(arr1[left]);
-      left++;
+  while (arr1[pt1] || arr2[pt2]) {
+    if (!arr2[pt2] || arr1[pt1] < arr2[pt2]) {
+      mergedArr.push(arr1[pt1]);
+      pt1++;
     } else {
-      mergedArr.push(arr2[right]);
-      right++;
+      mergedArr.push(arr2[pt2]);
+      pt2++;
     }
   }
-
   return mergedArr;
-}
+};
