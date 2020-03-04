@@ -12,18 +12,18 @@
 // SPACE COMPLEXITY
 // O(1) space
 
-function averagePair(arr, avg) {
+const averagePair = (arr, avg) => {
   if (avg > arr[arr.length - 1]) return false;
   if (!arr.length) return false;
 
   let left = 0;
   let right = arr.length - 1;
 
-  while (right > left) {
-    let testAvg = right + left / 2;
+  while (left < right) {
+    const testAvg = (arr[right] + arr[left]) / 2;
     if (testAvg === avg) return true;
     else if (testAvg < avg) left++;
     else right--;
   }
   return false;
-}
+};
