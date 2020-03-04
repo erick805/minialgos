@@ -18,40 +18,36 @@ Note:
   3. The length of T will be in the range [1, 100].
 */
 
-// 2 pointers + sliding window
-
-const minWindow = (S, T) => {
+// O(S.length) time | O(S.length) space
+const minWindowSeqStr = (S, T) => {
   let sIdx = 0;
   let tIdx = 0;
+
   const s = S.length;
   const t = T.length;
 
   let subStr = "";
-  // iterate through entire string
+
   while (sIdx < s) {
     if (S[sIdx] === T[tIdx]) {
       tIdx++;
       if (tIdx === t) {
-        const end = sIdx + 1; // capture end of last matched index
-        tIdx--; // move pointer back to last matched char
-
+        const end = sIdx + 1;
+        tIdx--; // move back to last char in T
         // reset t and s to beg
         while (tIdx >= 0) {
           if (S[sIdx] === T[tIdx]) tIdx--;
           sIdx--;
         }
-        sIdx++; // reset s index back to first matching index
+        sIdx++; // reset s idx back to first matching
+        tIdx++; // reset t idx back to 0
 
-        tIdx++; // reset t index back to 0
-
-        // reassign shortest sub string
         if (!subStr || end - sIdx < subStr.length) {
           subStr = S.substring(sIdx, end);
         }
       }
     }
-    sIdx++; // iterate to next letter
+    sIdx++;
   }
-
-  return !subStr ? "" : subStr;
+  return subStr;
 };
