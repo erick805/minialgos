@@ -5,6 +5,7 @@ Input: [75,105,120,75,90,135]
 Output: 330 (75 + 120 + 135)
 */
 
+// O(array.length) time | O(1) space
 const maxSubsetSumNoAdjacent = array => {
   if (!array.length) return 0;
   if (array.length === 1) return array[0];
