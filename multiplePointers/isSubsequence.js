@@ -5,26 +5,17 @@
 //       ('hi', 'h') => false
 //       ('hiw', 'hw theri')  => false
 
-// multiple pointers approach
-
-// TIME COMPLEXITY
-// O(n) time
-
-// SPACE COMPLEXITY
-// O(1) space
-
-function isSubsequence(subStr, str) {
+// O(str.length) time | O(1) space
+const isSubSequence = (subStr, str) => {
   if (subStr.length > str.length) return false;
 
   let pointerOne = 0;
   let pointerTwo = 0;
 
   while (pointerTwo < str.length) {
-    if (str[pointerTwo] === subStr[pointerOne]) {
-      pointerOne++;
-    }
+    if (str[pointerTwo] === subStr[pointerOne]) pointerOne++;
     if (pointerOne === subStr.length) return true;
     pointerTwo++;
   }
   return false;
-}
+};
