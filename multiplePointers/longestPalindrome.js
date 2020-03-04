@@ -13,6 +13,7 @@ Input: "cbbd"
 Output: "bb"
 */
 
+// O(s.length) time | O(s.length) space
 const longestPalindrome = s => {
   if (!s) return "";
 
@@ -31,8 +32,7 @@ const longestPalindrome = s => {
       }
       // if our current substring's length is bigger than maxPalindrome, set substring as new maxPalindrome
       if (right - left - 1 > maxPalindrome.length) {
-        // because we decremented we have to add one to left
-        maxPalindrome = s.substring(left + 1, right);
+        maxPalindrome = s.substring(left + 1, right); // because we decremented we have to move one left
       }
     }
   }
