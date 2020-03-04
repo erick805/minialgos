@@ -25,7 +25,7 @@ const trapWater = blocks => {
     leftMax = Math.max(leftMax, blocks[i]);
     // grab current tallest right boundary at left index
     const rightHighest = rightMaxes[i];
-    // get minimum height of both boundaries and subtract from current shortest boundary
+    // get minimum height of both boundaries and subtract from current boundary
     collectedWater += Math.min(leftMax, rightHighest) - blocks[i];
   }
   return collectedWater;
