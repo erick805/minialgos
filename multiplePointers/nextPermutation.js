@@ -16,7 +16,7 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 // Space Complexity: O(1)
 
 const nextPermutation = nums => {
-  if (!nums || nums.length === 0) return nums;
+  if (nums.length === 0) return nums;
 
   let option = -1;
   // find start of first decreasing sub sequence starting from back
@@ -31,7 +31,7 @@ const nextPermutation = nums => {
     for (let i = nums.length - 1; i > option; i--) {
       // as soon as we find a number that is greater than option swap since it is least on right side
       if (nums[i] > nums[option]) {
-        let temp = nums[i];
+        const temp = nums[i];
         nums[i] = nums[option];
         nums[option] = temp;
         break;
@@ -39,15 +39,16 @@ const nextPermutation = nums => {
     }
   }
   // reverse back again to get the lowest possible permutation for option.
-  reverse(option + 1, nums.length - 1, nums);
+  return reverse(option + 1, nums.length - 1, nums);
 };
 
 const reverse = (beg, end, arr) => {
   while (beg < end) {
-    let temp = arr[beg];
+    const temp = arr[beg];
     arr[beg] = arr[end];
     arr[end] = temp;
     beg++;
     end--;
   }
+  return arr;
 };
