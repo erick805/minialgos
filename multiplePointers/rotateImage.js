@@ -46,7 +46,7 @@ const rotateImage = matrix => {
   // swap rows with columns - transpose
   for (let i = 0; i < length; i++) {
     for (let j = i; j < length; j++) {
-      let temp = matrix[i][j];
+      const temp = matrix[i][j];
       matrix[i][j] = matrix[j][i];
       matrix[j][i] = temp;
     }
@@ -54,9 +54,10 @@ const rotateImage = matrix => {
   // reverse each row in tranposed matrix
   for (let i = 0; i < length; i++) {
     for (let j = 0; j < length / 2; j++) {
-      let temp = matrix[i][j];
+      const temp = matrix[i][j];
       matrix[i][j] = matrix[i][length - 1 - j];
       matrix[i][length - 1 - j] = temp;
     }
   }
+  return matrix;
 };
