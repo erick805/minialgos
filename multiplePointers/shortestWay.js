@@ -31,17 +31,17 @@ const shortestWay = (source, target) => {
   let targetP = 0;
   let prevP;
 
-  let count = 0;
+  let concate = 0;
 
   while (prevP !== targetP) {
-    count++;
+    concate++;
     prevP = targetP;
 
-    for (let char of source) {
+    for (const char of source) {
       const targetChar = target[targetP];
 
       if (targetChar === char) targetP++;
-      if (!target[targetP]) return count;
+      if (!target[targetP]) return concate;
     }
   }
   // if pointer has not moved from last time - return -1
