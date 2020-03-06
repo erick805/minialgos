@@ -37,42 +37,39 @@ bottom->[16,  17,  18,  19,  20]]
 
 */
 
-function spiralCopy(inputMatrix) {
-  let spiralCopy = [];
+const spiralCopy = matrix => {
+  const spiralCopy = [];
   let topRow = 0;
-  let bottomRow = inputMatrix.length - 1;
+  let bottomRow = matrix.length - 1;
   let leftCol = 0;
-  let rightCol = inputMatrix[0].length - 1;
+  let rightCol = matrix[0].length - 1;
 
   while (topRow <= bottomRow && leftCol <= rightCol) {
-    // I want to add the uppermost row (row at pointer top from left to right) -> top += 1
+    // add uppermost row - left to right
     for (let i = leftCol; i <= rightCol; i++) {
-      spiralCopy.push(inputMatrix[topRow][i]);
+      spiralCopy.push(matrix[topRow][i]);
     }
     topRow++;
-
-    // I want to add rightmost column (row at right pointer and column from top to bottom) -> right -= 1
+    // add rightmost col - top to bottom
     for (let i = topRow; i <= bottomRow; i++) {
-      spiralCopy.push(inputMatrix[i][rightCol]);
+      spiralCopy.push(matrix[i][rightCol]);
     }
     rightCol--;
 
-    // I want to add bottom row (row at bottom pointer from right to left) -> bottom -= 1
+    // if still in bounds - add bottom row - right to left
     if (topRow <= bottomRow) {
       for (let i = rightCol; i >= leftCol; i--) {
-        spiralCopy.push(inputMatrix[bottomRow][i]);
+        spiralCopy.push(matrix[bottomRow][i]);
       }
       bottomRow--;
     }
-
-    // I want to add left column (row is at left pointer and column from bottom to top) -> left += 1
+    // add leftmost col - bottom to top
     if (leftCol <= rightCol) {
       for (let i = bottomRow; i >= topRow; i--) {
-        spiralCopy.push(inputMatrix[i][leftCol]);
+        spiralCopy.push(matrix[i][leftCol]);
       }
       leftCol++;
     }
   }
-
   return spiralCopy;
-}
+};
