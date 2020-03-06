@@ -1,12 +1,7 @@
 // Write a function that takes in a sorted array and returns the first pair that sums up to zero in an array.
 // If not return undefined.
 
-// TIME COMPLEXITY
-// O(logn) time complexity
-
-// SPACE COMPLEXITY
-// O(1) space complexity
-
+// O(log(arr.length)) time | O(1) space
 const sumZero = arr => {
   let pt1 = 0;
   let pt2 = arr.length - 1;
