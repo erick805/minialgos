@@ -19,7 +19,7 @@ A solution set is:
 // Time Complexity: O(n^2) worst case
 // Space Complexity: O(1)
 
-const threeSum = nums => {
+const threeSumsZero = nums => {
   // sort from least to greatest
   nums.sort((a, b) => a - b);
 
