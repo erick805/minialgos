@@ -7,8 +7,8 @@
 //         dur = 8
 // output: [60, 68]
 
-// input:  slotsA = [10, 20][30, 40]
-//         slotsB = [20, 30][31, 40]
+// input:  slotsA = [[10, 20], [30, 40]]
+//         slotsB = [[20, 30], [31, 40]]
 //          dur = 8
 // output: [31, 39]
 
