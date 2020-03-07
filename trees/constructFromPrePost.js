@@ -18,6 +18,14 @@ Note:
 // pre = [1,2,4,5,3,6,7] (Root L R)
 // post = [4,5,2,6,7,3,1] (L R Root)
 
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
 const constructFromPrePost = (pre, post) => {
   if (pre.length === 0) return null;
   if (pre.length === 1) return new Node(pre[0]);
