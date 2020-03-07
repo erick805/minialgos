@@ -16,6 +16,7 @@ Each Binary Tree node has a value stored in a property called "value" and two ch
   Output: [15,16,18,10,11]
 */
 
+// O(n) time | O(n) space - n = # of nodes in Binary Tree
 class BinaryTree {
   constructor(val) {
     this.val = val;
