@@ -23,3 +23,9 @@ class BinaryTree {
     this.right = null;
   }
 }
+
+const branchSums = root => {
+  const sums = [];
+  calculateBranchSums(root, 0, sums);
+  return sums;
+};
