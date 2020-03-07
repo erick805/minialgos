@@ -15,3 +15,11 @@ Each Binary Tree node has a value stored in a property called "value" and two ch
 
   Output: [15,16,18,10,11]
 */
+
+class BinaryTree {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
