@@ -29,3 +29,17 @@ const branchSums = root => {
   calculateBranchSums(root, 0, sums);
   return sums;
 };
+
+const calculateBranchSums = (node, runSum, sums) => {
+  if (!node) return;
+
+  const newRunSum = runSum + node.val;
+
+  if (node.left === null && node.right === null) {
+    sums.push(newRunSum);
+    return;
+  }
+
+  calculateBranchSums(node.left, newRunSum, sums);
+  calculateBranchSums(node.right, newRunSum, sums);
+};
