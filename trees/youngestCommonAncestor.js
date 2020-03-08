@@ -15,6 +15,7 @@ Input: Node A, Node E, Node I
 Output: Node B
 */
 
+// O(d) time | O(1) space - d = depth of the ancestral tree
 class AncestralTree {
   constructor(name) {
     this.name = name;
