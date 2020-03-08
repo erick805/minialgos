@@ -25,6 +25,20 @@ class AncestralTree {
 const youngestCommonAncestor = (topAncestor, descendantOne, descendantTwo) => {
   const depthOne = getDescendantDepth(descendantOne, topAncestor);
   const depthTwo = getDescendantDepth(descendantTwo, topAncestor);
+
+  if (depthOne > depthTwo) {
+    return backtrackAncestralTree(
+      descendantOne,
+      descendantTwo,
+      depthOne - depthTwo
+    );
+  } else {
+    return backtrackAncestralTree(
+      descendantTwo,
+      descendantOne,
+      depthTwo - depthOne
+    );
+  }
 };
 
 const getDescendantDepth = (descendant, topAncestor) => {
@@ -34,4 +48,17 @@ const getDescendantDepth = (descendant, topAncestor) => {
     descendant = descendant.ancestor;
   }
   return depth;
+};
+
+const backtrackAncestralTree = (lower, higher, diff) => {
+  while (diff > 0) {
+    lower = lower.ancestor;
+    diff--;
+  }
+
+  while (lower !== higher) {
+    lower = lower.ancestor;
+    higher = higher.ancestor;
+  }
+  return lower;
 };
