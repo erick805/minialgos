@@ -78,31 +78,35 @@ Output: 42
 // Space Complexity
 // O(logn) space
 
-function maxPathSum(tree) {
-  let [_, maxSum] = findMaxSum(tree);
+const maxPathSum = tree => {
+  const [_, maxSum] = [...findMaxSum(tree)];
 
   return maxSum;
-}
+};
 
-function findMaxSum(tree) {
+const findMaxSum = tree => {
   if (tree === null) return [0, 0];
   // find the left max sum as a branch, and left max path sum
-  let [leftMaxSumAsBranch, leftMaxPathSum] = findMaxSum(tree.left);
+  const [leftMaxSumAsBranch, leftMaxPathSum] = findMaxSum(tree.left);
   // find the right max sum as a branch, and right max path sum
-  let [rightMaxSumAsBranch, rightMaxPathSum] = findMaxSum(tree.right);
+  const [rightMaxSumAsBranch, rightMaxPathSum] = findMaxSum(tree.right);
   // This could be negative
-  let maxChildSumAsBranch = Math.max(leftMaxSumAsBranch, rightMaxSumAsBranch);
+  const maxChildSumAsBranch = Math.max(leftMaxSumAsBranch, rightMaxSumAsBranch);
 
-  let value = tree.val;
+  const { value } = tree;
   // find the maximum of the branches, either just the max of the child sums, or max of child sums + root
-  let maxSumAsBranch = Math.max(maxChildSumAsBranch + value, value);
+  const maxSumAsBranch = Math.max(maxChildSumAsBranch + value, value);
   // either triangle, or just the max of the branches.
-  let maxSumAsRootNode = Math.max(
+  const maxSumAsRootNode = Math.max(
     leftMaxSumAsBranch + value + rightMaxSumAsBranch,
     maxSumAsBranch
   );
 
-  let maxPathSum = Math.max(leftMaxPathSum, maxSumAsRootNode, rightMaxPathSum);
+  const maxPathSum = Math.max(
+    leftMaxPathSum,
+    maxSumAsRootNode,
+    rightMaxPathSum
+  );
 
   return [maxSumAsBranch, maxPathSum];
-}
+};
