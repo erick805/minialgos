@@ -14,3 +14,10 @@ Input: Node A, Node E, Node I
 
 Output: Node B
 */
+
+class AncestralTree {
+  constructor(name) {
+    this.name = name;
+    this.ancestor = null;
+  }
+}
