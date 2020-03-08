@@ -21,3 +21,17 @@ class AncestralTree {
     this.ancestor = null;
   }
 }
+
+const youngestCommonAncestor = (topAncestor, descendantOne, descendantTwo) => {
+  const depthOne = getDescendantDepth(descendantOne, topAncestor);
+  const depthTwo = getDescendantDepth(descendantTwo, topAncestor);
+};
+
+const getDescendantDepth = (descendant, topAncestor) => {
+  let depth = 0;
+  while (descendant !== topAncestor) {
+    depth++;
+    descendant = descendant.ancestor;
+  }
+  return depth;
+};
