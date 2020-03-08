@@ -21,10 +21,9 @@ Output: 1
            9   8
 '''
 
+
 # bfs iterative - O(n) time | O(n) space
-
-
-def invertBinaryTree(tree):
+def invertBinaryTreeBFS(tree):
     queue = [tree]
     while len(queue):
         current = queue.pop(0)
@@ -35,18 +34,13 @@ def invertBinaryTree(tree):
         queue.append(current.right)
 
 
-def swapLeftAndRight(tree):
-    tree.left, tree.right = tree.right, tree.left
-
 # dfs recursive - O(n) time | O(d) space, d = depth of tree
-
-
-def invertBinaryTree(tree):
+def invertBinaryTreeDFS(tree):
     if tree is None:
         return
     swapLeftAndRight(tree)
-    invertBinaryTree(tree.left)
-    invertBinaryTree(tree.right)
+    invertBinaryTreeDFS(tree.left)
+    invertBinaryTreeDFS(tree.right)
 
 
 def swapLeftAndRight(tree):

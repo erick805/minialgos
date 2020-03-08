@@ -41,7 +41,7 @@ The flattened tree should look like:
 
 function flatten(root) {
   let head = root;
-  let stack = [];
+  const stack = [];
 
   while (head) {
     if (head.right) {
