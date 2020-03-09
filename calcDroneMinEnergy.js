@@ -16,19 +16,15 @@ input:  route = [ [0,   2, 10],
                   [9,  20,  6],
                   [10, 12, 15],
                   [10, 10,  8] ]
+
+output: 5
 */
 
 // Edge cases
-
 // [[0,2,10]] => 0
 
-// Time Complexity
-// O(n) - time
-
-// Space Complexity
-// O(1) - space
-
-function calcDroneMinEnergy(route) {
+// O(route.length) time | O(1) space
+const calcDroneMinEnergy = route => {
   let newHeight = route[0][2];
 
   for (let i = 1; i < route.length; i++) {
@@ -39,4 +35,4 @@ function calcDroneMinEnergy(route) {
   }
 
   return newHeight - route[0][2];
-}
+};
