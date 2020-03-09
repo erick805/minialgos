@@ -20,9 +20,7 @@ Note:
   2. Both str1 and str2 contain only lowercase English letters.
 */
 
-// Time Complexity: O(n)
-// Space Complexity: O(n)
-
+// O(str1.length) time | O(str1.length) space
 const canConvert = (str1, str2) => {
   if (str1 === str2) return true;
 
