@@ -16,3 +16,20 @@ give out to all the students, while satisfying the three rules.
 Input: [8,4,2,1,3,6,7,9,5]
 Output: 25 ([4,3,2,1,2,3,4,5,1])
 */
+
+const minStickers = goals => {
+    const stickers = goals.map(goal => 1)
+  
+    for (let i = 1; i < goals.length; i++) {
+      if (goals[i] > goals[i - 1]) {
+        stickers[i] = stickers[i - 1] + 1
+      }
+    }
+  
+    for (let i = goals.length - 2; i >= 0; i--) {
+      if (goals[i] > goals[i + 1]) {
+        stickers[i] = Math.max(stickers[i], stickers[i + 1] + 1)
+      }
+    }
+    return stickers.reduce((a, b) => a + b)
+  }
