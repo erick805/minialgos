@@ -14,7 +14,7 @@ Output: [0,7]
 '''
 
 
-# O(n) time | O(n) space
+# O(array.length) time | O(array.length) space
 def longestRange(array):
     largestRange = []
     longestLen = 0
