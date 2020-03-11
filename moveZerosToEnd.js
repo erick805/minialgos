@@ -9,25 +9,8 @@ input:  arr = [1, 10, 0, 2, 8, 3, 0, 0, 6, 4, 0, 5, 7, 0]
 output: [1, 10, 2, 8, 3, 6, 4, 5, 7, 0, 0, 0, 0, 0]
 */
 
-/*
-Edge Case:
-([]) => []
-([1]) => [1]
-([1,0]) => [1,0]
-([0,1]) => [1,0]
-([1,0,1) => [1,1,0]
-([0,1,1]) => [1,1,0]
-([1,0,0]) => [1,0,0]
-([0,0,1]) => [1,0,0]
-([0,1,0]) => [1,0,0]
-*/
 
-// Time Complexity
-// O(n)
-
-// Space Complexity
-// O(1)
-
+// O(arr.length) time | O(1) space
 const moveZerosToEnd = arr => {
   if (!arr.length) return []
   if (arr.length === 1) return arr
