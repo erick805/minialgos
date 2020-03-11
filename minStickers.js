@@ -17,6 +17,8 @@ Input: [8,4,2,1,3,6,7,9,5]
 Output: 25 ([4,3,2,1,2,3,4,5,1])
 */
 
+
+// O(goals.length) time | O(goals.length) space
 const minStickers = goals => {
     const stickers = goals.map(goal => 1)
   
