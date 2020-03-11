@@ -30,10 +30,7 @@ Note:
 2 <= A.length == B.length <= 20000
 */
 
-// Time Complexity: O(n)
-// Space Complexity: O(1)
-
-
+// O(A.length or B.length) time | O(1) space
 const minDominoRotations = (A, B) => {
   const flips = checkNotNum(A[0], A, B)
   // if it did not return -1, this means the matching value is in A, otherwise check B.
