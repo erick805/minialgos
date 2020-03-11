@@ -14,7 +14,7 @@ Output: 2
 
 Explanation:
 The first figure represents the dominoes as given by A and B: before we do any rotations.
-If we rotate the second and fourth dominoes, we can make every value in the top row equal to 2, as indicated by the second figure.
+If we rotate the second and fourth dominoes, we can make every value in the top row equal to 2.
 
 Example 2:
 
@@ -33,28 +33,25 @@ Note:
 // Time Complexity: O(n)
 // Space Complexity: O(1)
 
+
 const minDominoRotations = (A, B) => {
-  let flips;
+  const flips = checkNotNum(A[0], A, B)
+  // if it did not return -1, this means the matching value is in A, otherwise check B.
+  return flips !== -1 ? flips : checkNotNum(B[0], A, B) 
+}
 
-  const checkNotNum = num => {
-    let countA = 0;
-    let countB = 0;
+const checkNotNum = (num, arr1, arr2) => {
+  let countA = 0
+  let countB = 0
 
-    // since they are equal length we can do this
-    for (let i = 0; i < A.length; i++) {
-      // if both our current dominoes don't include the number then it does not match for both sets.
-      if (A[i] !== num && B[i] !== num) return -1;
-      // tally how much each domino set does not contain the current num
-      if (A[i] !== num) countA++;
-      if (B[i] !== num) countB++;
-    }
-    // return the lowest amount of possible flips
-    return Math.min(countA, countB);
-  };
+  // since they are equal length we can do this
+  for (let i = 0; i < arr1.length; i++) {
+    // if both our current arrays don't include the number then it does not match for both sets.
+    if (arr1[i] !== num && arr2[i] !== num) return -1
+    // tally how much each set does not contain the current num
+    if (arr1[i] !== num) countA++
+    if (arr2[i] !== num) countB++
+  }
 
-  flips = checkNotNum(A[0]);
-  // if it did not return -1, this means the matching value is in A
-  if (flips !== -1) return flips;
-  // if it did - check the matching value in B
-  return checkNotNum(B[0]);
-};
+  return Math.min(countA, countB)
+}
