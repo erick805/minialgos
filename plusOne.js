@@ -18,9 +18,8 @@ Output: [4,3,2,2]
 Explanation: The array represents the integer 4321.
 */
 
-// Time Complexity: O(n)
-// Space Complexity: O(1)
 
+// O(nums.length) time | O(1) space
 const plusOne = nums => {
   // loop from back to access last digit
   for (let i = nums.length - 1; i >= 0; i--) {

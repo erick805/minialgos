@@ -1,5 +1,5 @@
 /*
-Every email consists of a local name and a domaine name, seperated by the @ sign.
+Every email consists of a local name and a domain name, seperated by the @ sign.
 
 For example, in alice@leetcode.come, alice is the local name and leetcode.com is the domain name
 
